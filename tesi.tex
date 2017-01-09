@@ -1,0 +1,119 @@
+\documentclass[a4paper, 12pt, twoside, openright]{book}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subfiles}
+\usepackage[toc, acronym]{glossaries}
+%------------------------------ colors
+\usepackage[usenames,dvipsnames,table]{xcolor} % use colors on table and more
+\definecolor{333}{RGB}{51, 51, 51} % define custom color
+%------------------------------ source code
+\usepackage{listings}
+\lstset{
+  basicstyle=\footnotesize\sffamily,
+  commentstyle=\itshape\color{gray},
+  captionpos=b,
+  frame=shadowbox,
+  language=HTML,
+  rulesepcolor=\color{333},
+  tabsize=2
+}
+%------------------------------ define Abstract environment, missing in the 'book' class
+\newenvironment{abstract}{\cleardoublepage \null \vfill \begin{center}\bfseries\abstractname \end{center}}{\vfill\null}
+\addto\captionsitalian{\renewcommand*\abstractname{Sommario}} % change Abstract title
+%------------------------------ active url
+\usepackage{url}
+\renewcommand{\UrlFont}{\color{black}\small\ttfamily}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black]{hyperref} % active ref
+\renewcommand*\arraystretch{1.4} % tables padding
+
+%------------------------------ costruisci glossario
+\subfile{extra/glossario}
+\makeglossaries
+
+
+\begin{document}
+\frontmatter
+
+\begin{titlepage} %------------------------------ TITLE PAGE
+\begin{center}
+\vbox to0pt{\vbox to\textheight{\vfill \includegraphics[width=11.5cm]{images/unipd-light} \vfill}\vss}
+
+\hspace{0.5cm}
+\begin{minipage}{.20\textwidth}
+  \includegraphics[height=2.5cm]{images/unipd-bn}
+\end{minipage}\begin{minipage}{.90\textwidth}
+  \begin{table}[H]
+  \begin{tabular}{l}
+  \scshape{\Large{\bfseries{Università degli Studi di Padova}}} \\
+  \hline \\
+  \scshape{\Large{Dipartimento di Matematica}} \\
+  \end{tabular}
+  \end{table}
+\end{minipage}
+
+\vspace{1cm}
+\emph{\Large{Corso~di~Laurea~in~Informatica}} \\
+\vspace{1.5cm}
+\scshape{\Large{\bfseries{Implementazione di una interfaccia~SAPI~5 mediante i sistemi di sintesi vocale MaryTTS e Speect}}} \\
+\end{center}
+
+\vfill
+\begin{normalsize}
+\begin{flushleft}
+  \hspace{45pt} \textit{Laureando} \hspace{160pt} \textit{Relatore}\\
+  \vspace{5pt}
+  \hspace{30pt} \large{\textbf{Cristian Andrighetto}} \hspace{70pt} \large{\textbf{Prof. Paolo Baldan}}\\
+  \vspace{10pt}
+\end{flushleft}
+\end{normalsize}
+
+\vfill
+\begin{center}
+\hspace{-0.2cm}
+\line(1, 0){360}
+
+\textsc{Anno Accademico 2016/2017}
+\end{center}
+\end{titlepage}
+
+\cleardoublepage % make left page blank
+
+%------------------------------ DEDICA
+\thispagestyle{empty} 
+\subfile{extra/ringraziamenti}
+
+%------------------------------ TABELLA DEI CONTENUTI
+\begingroup 
+  \makeatletter
+  \let\ps@plain\ps@empty
+  \makeatother
+  \tableofcontents
+  \clearpage
+\endgroup
+
+
+%------------------------------ ABSTRACT
+\subfile{extra/abstract}
+
+
+\mainmatter
+
+%------------------------------ CAPITOLI
+
+\subfile{chapters/capitolo-1-introduzione}
+\subfile{chapters/capitolo-2}
+
+\backmatter
+
+%------------------------------ GLOSSARIO
+\printglossaries
+
+%------------------------------ BIBLIOGRAFIA
+\subfile{extra/bibliografia}
+
+\end{document} 
