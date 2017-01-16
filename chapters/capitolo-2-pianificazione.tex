@@ -1,0 +1,122 @@
+\chapter{Pianificazione} %------------------------------ CHAPTER TITLE
+\thispagestyle{empty}
+
+\newpage
+\section{Piano di Lavoro}
+Prima di iniziare l'attività di stage è stato stilato assieme al tutor aziendale Giulio Paci e al relatore Paolo Baldan il piano di lavoro.\\
+Esso si componeva principalmente di due macro-attività:
+\begin{itemize}
+	\item Studio delle tecnologie TTS
+	\item Implementazione delle interfacce SAPI~5 per gli engine MaryTTS e Speect
+\end{itemize}
+
+\subsection{Descrizione delle attività}
+
+\begin{description}[style=unboxed]
+	\item[Studio delle tecnologie TTS] Questa attività serviva ad affrontare lo studio delle tecnologie TTS proposte. Gli ambiti di studio coinvolti erano:
+	\begin{itemize}
+		\item SAPI~5
+		\item MaryTTS
+		\item Speect
+	\end{itemize}
+	Per quanto riguarda lo studio di SAPI~5 si trattava di consultare la documentazione messa a disposizione dalla Microsoft Developer Network (MSDN) e di trovare le best practice per l'implementazione dell'interfaccia.\\
+	Per MaryTTS e Speect il compito non si fermava solamente allo studio del loro funzionamento, ma bisognava anche renderli funzionanti nel sistema ospitante ovvero Microsoft Windows.\\
+	I compiti da svolgere erano: rendere operativi i due engine per gli utenti e fornire ai programmatori futuri delle condizioni di sviluppo idonee.
+	
+	\item[Implementazione delle interfacce SAPI~5 per gli engine MaryTTS e Speect]
+	Questa attività serviva ad implementare le interfacce SAPI~5. L'attività di sviluppo comprendeva oltre alla stesura del codice anche la progettazione, il testing e il debug.
+	L'implementazione delle due interfacce risultava diversa nella parte di comunicazione tra l'interfaccia e gli engine.\\
+	MaryTTS doveva comunicare tramite chiamate HTTP con l'interfaccia SAPI~5, invece Speect tramite chiamate a funzioni C.  
+\end{description}
+
+\subsection{Preventivo}
+
+La suddivisione delle ore concordata insieme al tutor aziendale Giulio Paci e al relatore Paolo Baldan è la seguente:
+
+\begin{center}
+	
+	\begin{tabular} {|l|l|c p{10cm}|}
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Durata in ore}}		&	\multicolumn{2}{l|}{\textbf{Descrizione dell'attività}}\\
+		\hline
+		\multicolumn{2}{|l|}{80}	&	\multicolumn{2}{l|}{Studio delle tecnologie TTS}\\
+		\hline
+		\multirow{3}{1cm}{ }    &            40            &            \hspace{5mm}•\hspace{2mm}            &  Specifiche TTS SAPI~5\\
+		\cline{2-2}
+		&            40            &            \hspace{5mm}•\hspace{2mm}            &            Setup di Speect e MaryTTS\\
+		\hline
+		
+		\multicolumn{2}{|l|}{240}	&	\multicolumn{2}{l|}{Implementazione Engine TTS SAPI~5}\\
+		\hline
+		
+		\multirow{3}{1cm}{ }    &            40            &            \hspace{5mm}•\hspace{2mm}            & Creazione di un esempio minimale di engine TTS SAPI~5 utilizzando CURL \\
+		\cline{2-2}
+		&            80            &            \hspace{5mm}•\hspace{2mm}            &            Creazione di un esempio minimale di engine TTS SAPI~5 utilizzando Speect \\
+		\cline{2-2}
+		&            60            &            \hspace{5mm}•\hspace{2mm}            &            Implementazione di test (integrazione e unità) per engine TTS SAPI~5 \\
+		\cline{2-2}
+		&            60            &            \hspace{5mm}•\hspace{2mm}            &            Debug del codice: 2 settimane \\
+		\hline
+	\end{tabular}
+	
+\end{center}
+
+\subsection{Prodotto finale}
+Lo stage ha come obiettivo finale la creazione di un prodotto.
+Il risultato che si vuole ottenere è l'integrazione degli engine TTS MaryTTS e Speect con il sistema operativo Microsoft Windows. Tutto ciò dovrà essere ottenuto grazie all'implementazione delle interfacce SAPI~5.
+L'utilizzo della specifica SAPI~5 renderà possibile la fruizione degli engine TTS a livello di sistema operativo, questo significa che le applicazioni utente potranno essere sia Windows stesso che altre applicazioni come ad esempio lettori, avatar o assistenti vocali.\\
+Le interfacce dovranno fornire la possibilità di controllare dei parametri della voce che dovranno essere:
+\begin{itemize}
+	\item la velocità;
+	\item la tonalità (o pitch);
+\end{itemize}
+
+
+\subsection{Obiettivi}
+
+Per definire in modo ottimale le priorità sul prodotto si sono estratti dei requisiti minimi per soddisfare l'esigenza del committente.\\
+Questi requisiti sono stati in divisi in categorie e sono identificati dalle seguenti sigle:
+\begin{itemize}
+	\item \textbf{ob} per i requisiti obbligatori, vincolanti in quanto obiettivo primario
+	richiesto dal committente;
+	\item  \textbf{de} per i requisiti desiderabili, non vincolanti o strettamente necessari,
+	ma dal riconoscibile valore aggiunto;
+	\item \textbf{op} per i requisiti opzionali, rappresentanti valore aggiunto non
+	strettamente competitivo.
+\end{itemize}
+Le sigle precedentemente indicate saranno seguite da una coppia sequenziale di numeri, identificativo del requisito.\\
+
+Si prevede lo svolgimento dei seguenti obiettivi:
+\begin{itemize}
+	\item \textbf{Obbligatori}
+	\begin{itemize}
+		\item \textbf{ob01}: Implementazione di un engine TTS SAPI~5 funzionante mediante chiamate HTTP a MaryTTS;
+		\item \textbf{ob02}: Implementazione di un engine TTS SAPI~5 funzionante mediante chiamate C a Speect;
+		\item \textbf{ob03}: Implementazione di test di integrazione per gli engine TTS SAPI~5;
+	\end{itemize}
+	
+	\item \textbf{Desiderabili} 
+	\begin{itemize}
+		\item \textbf{de01}: Implementazione di un engine TTS SAPI~5 con supporto per cambio di velocità e cambio pitch;
+		\item \textbf{de02}: Implementazione di test di unità per Speect;
+	\end{itemize}
+	
+	\item \textbf{Opzionali}
+	\begin{itemize}
+		\item \textbf{op01}: Implementazione di un engine TTS SAPI~5 con pieno supporto a tutte le funzionalità;
+		\item \textbf{op02}: Configurazione di una voce inglese per Speect.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Vincoli Tecnologici}
+Per soddisfare i requisiti del prodotto sono stati imposti alcuni vincoli tecnologici.\\
+Le tecnologie che dovranno essere utilizzate durante lo stage sono:
+\begin{itemize}
+	\item Linguaggio di programmazione \textbf{C} o \textbf{C++};
+	\item Ambiente di sviluppo \textbf{Visual Studio};
+	\item Sistema operativo \textbf{Microsoft Windows};
+	\item Libreria \textbf{CURL} per eseguire per le chiamate HTTP;
+	\item Specifica \textbf{SAPI~5};
+	\item Engine TTS \textbf{MaryTTS} e \textbf{Speect}.
+\end{itemize}
+
