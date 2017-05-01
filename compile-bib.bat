@@ -7,6 +7,6 @@ if [%BUILD_DIR%]==[] set BUILD_DIR=.\
 @echo -                  Aggiornamento Bibliografia                -
 @echo --------------------------------------------------------------
 
-bibtex %BUILD_DIR%%MAIN%
+biber %BUILD_DIR%%MAIN%
 
 ::set /p keys=Done...
