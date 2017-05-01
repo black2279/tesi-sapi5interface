@@ -1,0 +1,125 @@
+\chapter{Tecnologie Utilizzate} %------------------------------ CHAPTER TITLE
+\thispagestyle{empty}
+
+\newpage
+\section{Balabolka}
+Balabolka è un applicazione desktop freeware disponibile per il sistema operativo Microsoft Windows che svolge la funzione di lettore. Essa offre la possibilità di leggere dei testi selezionando una voce a disposizione.\\
+Implementa quasi tutti i metodi lato utente dell'interfaccia SAPI~5, supportando in primo luogo la sintesi, la tracciatura delle parole lette e il controllo dei vari parametri della voce.\\
+Questa applicazione è stata usata sia in fase di test che in fase di debug.
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item implementa diverse interfacce per tecnologie TTS tra cui SAPI~5;
+	\item dispone di un'interfaccia chiara e semplice;
+	\item l'applicazione è gratis.
+\end{itemize}
+\subsection*{Svantaggi}
+\begin{itemize}
+	\item è disponibile solo la versione a 32-bit.
+\end{itemize}
+
+\section{cURL}
+cURL è un progetto software che fornisce uno strumento a linea di comando e una libreria per comunicare attraverso vari protocolli di rete.
+Nell'attività di stage verrà utilizzato come libreria per comunicare attraverso chiamate HTTP con l'engine MaryTTS.
+L'utilizzo di questa libreria è necessario perchè l'engine risiede in un server che risponde attraverso REST API.
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item compatibile con varie piattaforme;
+	\item è scritta in C;
+	\item open-source;
+	\item è gratuita.
+\end{itemize}
+\subsection*{Svantaggi}
+\begin{itemize}
+	\item offre delle API non sempre intuitive.
+\end{itemize}
+\section{C}
+Il C è un linguaggio di programmazione nato nel 1972. Segue i paradigmi di tipo strutturato e procedurale. È considerato un linguaggio di programmazione ad "alto livello" ma integra anche caratteristiche vicine al linguaggio Assembly e al linguaggio macchina.\\
+Questo linguaggio sarà utilizzato per apportare le modifiche a Speect e all'implementazione delle funzioni di supporto delle interfacce SAPI~5.
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item mirato all'efficienza;
+	\item la sua struttura modulare facilita il debug, il testing e la manutenzione;
+	\item ha un'elevata portabilità.
+\end{itemize}
+\subsection*{Svantaggi}
+\begin{itemize}
+	\item non è orientato agli oggetti;
+	\item per gli utenti neofiti la gestione della memoria può essere complicata e alle volte pericolosa.~\cite{c-advantages-disadvantages}
+\end{itemize}
+\section{C++}
+Il C++ è un linguaggio di programmazione orientato agli oggetti, con tipizzazione statica. È stato sviluppato da Bjarne Stroustrup nel 1983 come un miglioramento del linguaggio C.
+Offre molti paradigmi di programmazione che vanno da quello procedurale a quello funzionale.
+Il linguaggio C++ verrà utilizzato per implementare l'interfaccia SAPI sottoforma di DLL.
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item è compatibile con il linguaggio C;
+	\item offre un alto livello di astrazione;
+	\item è mirato all'efficienza e alle performance.
+\end{itemize}
+\subsection*{Svantaggi}
+\begin{itemize}
+	\item non supporta nativamente i thread;
+	\item i puntatori, le variabili globali e le funzioni friend lo rendono un linguaggio poco sicuro.~\cite{c++-advantages-disadvantages}
+\end{itemize}
+\section{Git}
+Git è un software di controllo versione creato da Linus Torvalds nel 2005. Permette di avere un controllo completo della storia di un software e uno sviluppo contemporaneo da parte di più utenti.
+Questo software verrà utilizzato per versionare lo sviluppo dell'engine Speect e dell'interfaccia SAPI.
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item è più veloce rispetto ad altri software di versionamento (esempio: SVN);
+	\item permette di lavorare in locale;
+	\item è gratuito e open source.~\cite{git-advantages-disadvantages}
+\end{itemize}
+\subsection*{Svantaggi}
+\begin{itemize}
+	\item non è sempre intuitivo, richiede dello studio;
+	\item non presenta un sistema automatico per la numerazione delle versioni;
+	\item risoluzione dei conflitti a volte complicata.
+\end{itemize}
+\section{GitLab}
+GitLab è una piattaforma web per la gestione di repository Git scritta da Dmitriy Zaporozhets e Valery Sizov, lanciata nel 2011. Oltre all'organizzazione delle varie repository, essa fornisce la gestione di pagine wiki e da la possibilità di utilizzare un'issue tracking.
+La piattaforma verrà utilizzata per ospitare lo sviluppo del componente SAPI per Windows.
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item numero illimitato di progetti privati e collaboratori con account gratuito;
+	\item possibilità di aggiungere sistemi di Continuous Integration;
+	\item è possibile attribuire differenti ruoli ai collaboratori per gestire i loro permessi.
+\end{itemize}
+\subsection*{Svantaggi}
+\begin{itemize}
+	\item non è aperta ad altri sistemi di controllo versione.
+\end{itemize}
+\section{GitHub}
+GitHub è una piattaforma web nata principalmente per la gestione di repository Git, sviluppata da GitHub Inc. e lanciata nel 2008. Come altri servizi di hosting di codice sorgente, offre anche uno strumento di issue tracking e la possibilità di creare pagine wiki. Al suo interno è presente anche un altro componente molto utile chiamato Gist. Il suo comportamento è molto simile ad un altro strumento presente online chiamato Pastebin, usato per condividere codice velocemente, l'unica differenza è la presenza del versionamento tramite Git.
+GitHub verrà utilizzato per portare avanti lo sviluppo di Speect e per entrare in possesso della libreria di pos-tagging Hunpos.
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item numero illimitato di repository pubbliche con account gratuito;
+\end{itemize}
+\subsection*{Svantaggi}
+\begin{itemize}
+	\item con un account gratuito non è possibile avere repository private;
+	\item non è possibile replicare il servizio su altre macchine.
+\end{itemize}
+\section{MaryTTS}
+MaryTTS è un motore di sintesi vocale open-source scritto in Java. E' stato sviluppato inizialmente dalla collaborazione di DFKI e dall'Institute of Phonetics dell'Università di Saarland. La versione che verrà impiegata per condurre il lavoro è stata sviluppata appositamente da Mivoq e prende il nome di FATTS MaryTTS. La versione utilizzata presenta delle differenze rispetto all'originale soprattutto a livello di output messi a disposizione.
+Questo engine verrà utilizzato per rispondere alle richieste provenienti dall'interfaccia SAPI.
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item è gratuito e open source;
+	\item ha un'alta portabilità perchè è scritto in Java;
+	\item l'engine è pensato come un server HTTP;
+	\item la versione proposta da Mivoq mette a disposizione delle Web API che rispondono in formato JSON;
+	\item supporta molte lingue.
+\end{itemize}
+\subsection*{Svantaggi}
+\begin{itemize}
+	\item le API originali rispondono in un formato non sempre adeguato;
+	\item la modifica e l'implementazione di nuove features non è sempre semplice.
+\end{itemize}
+\section{Microsoft Windows}
+\section{NSIS}
+\section{SAPI~5}
+\section{Speect}
+\section{TTSApplication}
+\section{Visual Studio 2015}
