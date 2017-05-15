@@ -146,6 +146,78 @@ Nullsoft Scriptable Install System (NSIS) è un sistema di installazione guidato
 	\item è disponibile solo per la piattaforma x86;
 \end{itemize}
 \section{SAPI~5}
+Microsoft Speech API 5 è un insieme di interfacce e di funzioni sviluppate da Microsoft per integrare nel proprio sistema operativo la sintesi vocale e il riconoscimento vocale. Verrà utilizzata la versione SAPI~5 perchè rispetto alle versioni precedenti non è dipendente dagli engine TTS che si vogliono utilizzare. Riassumendo, SAPI~5 si pone come un middleware che permette di interfacciare applicazioni utente con engine TTS e viceversa. Questo fa si che scrivendo un componente SAPI~5 che si interfacci con un engine TTS possa essere riutilizzato da diverse applicazioni.
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item permette di rendere usufruibile facilmente un engine TTS al sistema operativo;
+	\item un'applicazione che implementa un'interfaccia SAPI~5 può utilizzare tutti i servizi vocali che seguono la medesima specifica;
+	\item offre un'interfaccia semplice ma allo stesso tempo avanzata.
+\end{itemize}
+\subsection*{Svantaggi}
+\begin{itemize}
+	\item la documentazione alle volte risulta imprecisa e approssimativa;
+\end{itemize}
 \section{Speect}
+Speect è un engine TTS multilingua completo scritto in C sviluppato dal gruppo Human Language Tecnologies del Meraka Institute , CSIR, in Sud-Africa a partire dal 2010. Speect è un engine TTS pensato come un sistema a plug-in per favorire la modularità. Questo aspetto permette di sviluppare e sostituire plug-in in modo indipendente aumentando di conseguenza anche la testabilità. La versione che si andrà ad utilizzare è stata sviluppata da Mivoq e porta con sè alcuni miglioramenti rispetto all'originale.
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item è multilingua;
+	\item è open source;
+	\item è scritto in C ANSI 90;
+	\item è portabile;
+	\item altà modularità;
+	\item ampia possibilità di configurazione;
+	\item permette di testare i vari plug-in separatamente.
+\end{itemize}
+\subsection*{Svantaggi}
+Non stati rilevati svantaggi enormi nell'utilizzo di questo software.   
 \section{TTSApplication}
+TTSApplication è un'applicazione fornita da Microsoft pensata per testare le varie funzionalità messe a disposizione dalla specifica SAPI~5. Quest'applicazione ha il vantaggio di essere accompagnata dal codice sorgente e quindi può essere modificata e ricompilata. Il codice sorgente è disponibile sulla piattaforma Github.com a questo indirizzo \url{https://github.com/Microsoft/Windows-classic-samples/tree/master/Samples/Win7Samples/winui/speech/ttsapplication}.
+La versione fornita da Microsoft permette di: sintetizzare il testo con qualsiasi voce presente nel sistema operativo, visualizzare gli eventi SAPI che vengono lanciati e animare un semplice avatar attraverso i visemi generati dalla voce.
+Questo software verrà utilizzato per condurre i test e la fase di debug del componente SAPI che verrà sviluppato. 
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item è open source;
+	\item permette di testare la maggior parte delle funzionalità della specifica SAPI 5 riguardante la sintesi vocale;
+	\item è scritta in C++;
+	\item ha un'interfaccia semplice.
+\end{itemize}
+\subsection*{Svantaggi}
+Non stati rilevati svantaggi enormi nell'utilizzo di questo software.
 \section{Visual Studio 2015}
+Visual Studio 2015 è un IDE scritto da Microsoft e lanciato nel 2015. Esso comprende tutto il necessario per scrivere principalmente applicazioni per il sistema operativo Windows. 
+I linguaggi di programmazione supportati sono:
+\begin{itemize}
+	\item C;
+	\item C++;
+	\item C\#;
+	\item F\#;
+	\item Visual C;
+	\item Visual C++;
+	\item Visual C\#;
+	\item Visual Basic;
+	\item Javascript;
+	\item Typescript;
+\end{itemize}
+Visual Studio nel suo pacchetto comprende i compilatori, editor, designer e altri strumenti utili in fase di test e di debug. Inoltre possiede sistemi di versionamento integrati tra i quali Git.
+Offre un'ottima gestione delle configurazioni e una buona organizzazione dei file all'interno dei progetti creati.
+\subsection*{Vantaggi}
+\begin{itemize}
+	\item alcune versioni sono presenti in forma gratuita;
+	\item supporta molti linguaggi;
+	\item è possibile estendere le sue funzionalità tramite plug-in;
+	\item sono presenti template di progetto già pronti;
+	\item copre lo sviluppo delle piattaforme mobili (Android, iOS, Windows Phone);
+	\item debugger avanzato;
+	\item è predisposto per l'esecuzione dei test e la loro gestione.
+\end{itemize}
+\subsection*{Svantaggi}
+\begin{itemize}
+	\item è molto oneroso in termini di memoria sul disco, anche tenendo una configurazione minima;
+	\item il sistema Intellisense non è sempre preciso;
+	\item se si utilizza il compilatore MSVC, il codice generato ha un'esecuzione più lenta rispetto a quella del GCC.
+\end{itemize}
+
+
+
+ 
