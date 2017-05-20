@@ -158,4 +158,24 @@ Le interfacce che verranno utilizzate sono ISpTTSEngine e ISpObjectWithToken.
 		\item \texttt{ISpTTSEngineSite::GetSkipInfo(): HRESULT} per recuperare il tipo e il numero di unità da saltare in avanti o indietro rispetto al punto in cui la sintesi è arrivata. Per completare l'operazione c'è il bisogno di invocare il metodo \texttt{ISpTTSEngineSite::CompleteSkip()} che verifica se è possibile portare a termine l'azione;
 	\end{itemize}	
 	Un altro parametro della voce su cui è possibile agire è la tonalità. In questo caso la regolazione non avviene come per la velocità o il volume, ma si deve agire sulla proprietà \texttt{PitchAdj} associata agli elementi della lista \texttt{pTextFragList}.
+	\subsection{Implementazione Interfaccia SAPI~5 per MaryTTS}
+		%\begin{figure}[H]
+		%	\centering
+		%	\includegraphics{images/sapi5-interface.png}
+		%	\caption{Interfaccia SAPI~5}
+		%\end{figure}
+	Questa implementazione prevede l'utilizzo dell'engine MaryTTS fornito da Mivoq. L'engine non è disponibile direttamente sottoforma di libreria, ma è integrato in una piattaforma chiamata FA-TTS. Questa piattaforma è scritta in Java ed è essenzialmente un server che risponde alle richieste HTTP in modo REST e nel formato JSON.
+	Per rendere possibile la comunicazione tra l'implementazione dell'interfaccia SAPI e MaryTTS si è scelto di utilizzare la libreria cURL per eseguire le richieste HTTP al server.
+	Per gestire in maniera ottimale l'output del server, invece è stata scelta la libreria Jansson che permette di eseguire il parsing degli oggetti JSON.
+	I compiti a cui dovrà adempire questa implementazione saranno:
+	\begin{itemize}
+		\item richiedere a MaryTTS di eseguire la sintesi vocale dell'input richiesto;
+		\item gestire l'output audio e renderlo disponibile al sistema operativo.
+		\item eseguire la sintesi vocale con determinati parametri della voce.
+	\end{itemize}
+	La forma binaria che assumerà questa implementazione non sarà un'eseguibile ma una libreria dinamica. Questo permetterà al sistema operativo e a tutte le altre applicazioni di poterla utilizzare senza problemi attraverso lo standard SAPI~5.
+	\subsubsection{FATTS}
+	
+	
+	
 	
