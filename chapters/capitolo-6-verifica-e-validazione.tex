@@ -1,0 +1,38 @@
+\chapter{Verifica e Validazione}
+\thispagestyle{empty}
+
+\newpage
+\section{Verifica}
+Vista la natura sperimentale del progetto, non c'è stata la necessità di introdurre dei test automatici.\\
+La strada che si è percorsa è stata quella di utilizzare due applicazioni per effettuare dei test.
+Le applicazioni utilizzate sono state:
+\begin{itemize}
+	\item TTSApplication;
+	\item Balabolka;
+\end{itemize}
+I test sono stati condotti principalmente seguendo due fasi:
+\begin{itemize}
+	\item \textbf{prima fase} consisteva nel verificare che dato un input testuale con dei parametri di velocità e di tonalità della voce di default venisse effettuata la sintesi vocale.
+	\item \textbf{seconda fase} consisteva nel verificare tramite log la corretta sequenza degli eventi SAPI lanciati dall'applicazione.
+\end{itemize}
+In futuro questa procedura potrà essere sostituita o automatizzata e migliorata per consentire uno sviluppo di qualità maggiore.
+Per quanto riguarda il requisito \textbf{de02}, che riguarda i test di unità relativi a Speect, non è stato soddisfatto, perchè ci sono state delle complicazioni riguardo la compilazione del plugin Hunpos all'interno dell'ambiente Windows.\\
+Vista l'importanza del plugin all'interno di Speect, si è preferito dedicare del tempo alla sua corretta compilazione, invece che introdurre nuovi test di unità.
+Un altro motivo per cui questo requisito non è stato soddisfatto è perchè in corso d'opera è stato deciso di dedicare maggior tempo al requisito \textbf{op01}, che ha permesso di sviluppare la gestione degli eventi SAPI in maniera quasi completa.
+\section{Validazione}
+Negli ultimi giorni di stage è stato condotto, assieme al tutor aziendale, il collaudo.
+I risultati ottenuti sono stati giudicati positivi, perchè sono stati soddisfatti quasi tutti i requisiti.
+Quelli che risultavano non soddisfatti o parzialmente soddisfatti sono:
+\begin{itemize}
+	\item \textbf{de02}
+	\item \textbf{op01}
+	\item \textbf{op02}
+\end{itemize}
+Il tutor aziendale ha eseguito il collaudo tramite le applicazioni utilizzate per i test, ovvero TTSApp e Balabolka.
+Durante il collaudo non sono stati evidenziati gravi problemi riguardanti il progetto, ma sono emerse delle carenze da parte degli engine TTS utilizzati rispetto allo standard SAPI~5.
+Infatti quando le applicazioni utilizzate per i test facevano uso degli engine TTS si è notato che durante la sintesi vocale le parole non venivano evidenziate correttamente.
+Questo problema è emerso sia con l'utilizzo di MaryTTS che con Speect.\\
+Nel primo caso le parole non venivano evidenziate correttamente perchè MaryTTS non generava l'array \texttt{tokens} quando incontrava la sequenza ". lettera\_maiuscola" nell'input testuale.\\
+Nel secondo caso, Speect considerava l'offset e la lunghezza delle parole in caratteri e non in byte. Questo comportava che l'offset e la lunghezza dei caratteri utilizzati negli eventi di tipo \texttt{SPEI\_WORD\_BOUNDARY} non fossero corretti.\\
+Tralasciando questi due aspetti legati agli engine, che verranno risolti in futuro, il tutor aziendale è rimasto molto soddisfatto del lavoro svolto.
+
