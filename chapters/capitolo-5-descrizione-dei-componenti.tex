@@ -398,3 +398,217 @@ Prima di eseguire la sintesi, viene invocato il metodo \texttt{HandleActions()} 
 A questo punto il metodo \texttt{speect\_request\_complete\_text()} è pronto per essere chiamato ed eseguire la sintesi vocale attraverso Speect.
 Durante questa chiamata, Speect scorre le relazioni all'interno del suo Heterogeneous Relation Graph, recuperando le informazioni relative alle parole e ai fonemi. Grazie ad esse riesce attraverso le callback a costruire gli eventi SAPI associati.
 Infine Speect mediante il plugin dedicato al rendering audio, genera l'output e attraverso la callback lo carica nel buffer gestito dal sistema operativo.
+
+\section{MaryTTS}
+MaryTTS è un engine TTS multilingua open-source sviluppato da DFKI. Dopo aver valutato le sue caratteristiche e funzionalità Mivoq ha scelto di contribuire al suo sviluppo e di integrarlo nella piattaforma FA-TTS.
+L'azienda attraverso il suo lavoro ha esteso le funzionalità originali di MaryTTS fornendo nuove API e aggiungendo nuovi formati di input ed output.
+La piattaforma FA-TTS, grazie alle conoscenze di Mivoq, può eseguire la sintesi vocale con voci personalizzate, ovvero grazie ad un servizio offerto dall'azienda è possibile creare una voce qualsiasi.
+\subsection{Interfaccia Web Client}
+La piattaforma FA-TTS è scritta in Java e può essere installata in locale come server.
+Dispone di un'interfaccia web molto semplice composta da una casella di testo dove inserire l'input da sintetizzare e delle combo box che servono a selezionare la voce, il tipo di input e il tipo di output desiderati.
+Nel caso in cui l'output fosse di tipo audio è possibile selezionare il formato e impostare alcuni effetti audio, tra cui il volume, la tonalità e la velocità della voce.
+\subsection{FA-TTS REST API}
+La piattaforma FA-TTS mette a disposizione delle API che possono essere interrogate tramite richieste HTTP.
+Le API più rilevanti sono:
+\begin{itemize}
+	\item \textbf{say} viene utilizzata per eseguire la sintesi vocale in base ai parametri richiesti;
+	\item \textbf{info/version} serve a recuperare la versione corrente del server;
+	\item \textbf{info/voices/all} serve a recuperare tutte le voci disponibili nel server.
+\end{itemize}
+Adesso andremo ad analizzare degli esempi di richieste utili all'implementazione SAPI per MaryTTS.
+\subsubsection{Richiesta stream audio}
+Per eseguire la richiesta dello stream audio si utilizza l'API say nella seguente forma:
+\lstset{language=html,
+		basicstyle=\ttfamily,
+		columns=fullflexible,
+		showstringspaces=false,
+		breaklines=true }
+\begin{lstlisting}
+http://localhost:59125/say?input[type]=TEXT&input[content]=Benvenuti+nel+mondo+della+sintesi+vocale.&input[locale]=it&output[type]=AUDIO&output[format]=WAVE_FILE&voice[gender]=male&voice[name]=istc-speaker_internazionale-hsmm&voice[age]=35&voice[variant]=1&voice[selection_algorithm]=ssml&utterance[effects]=[{"Volume":1.5},{"F0Add":50.0},{"Rate":3.0}]
+\end{lstlisting}
+Ad esempio questa richiesta permette di sintetizzare il testo "Benvenuti nel mondo della sintesi vocale" con la voce "istc-speaker\_internazionale-hsmm" di genere maschile con 35 anni.
+Sono stati aggiunti anche degli effetti come l'amplificazione del volume, il cambio di tonalità e la diminuzione della velocità.
+\subsubsection{Richiesta parole e fonemi}
+La seguente richiesta viene impiegata per recuperare le parole e i fonemi sintetizzati da MaryTTS.
+\begin{lstlisting}
+	http://localhost:59125/say?input[type]=TEXT&input[content]=Benvenuti+nel+mondo+della+sintesi+vocale.&input[locale]=it&output[type]=LIPSYNC&voice[gender]=male&voice[name]=istc-speaker_internazionale-hsmm&voice[age]=35&voice[variant]=1&voice[selection_algorithm]=ssml&utterance[effects]=[{"Volume":1.5},{"F0Add":50.0},{"Rate":3.0}]
+\end{lstlisting}
+La richiesta è molto simile a quella per recuperare lo stream audio, l'unica differenza è il parametro \texttt{output[type]} impostato con il valore \texttt{LIPSYNC}.\\
+La risposta del server è in formato JSON ed è costruita nel seguente modo:
+\lstset{language=html,
+	basicstyle=\ttfamily,
+	columns=fullflexible,
+	showstringspaces=false,
+	breaklines=true }
+\begin{lstlisting}
+{
+"tokens":[{ 
+			"char_end": integer, 
+			"start": float,
+			"end": float,
+			"char_start": integer
+}],
+"segments":[{ 
+			"stressed": boolean, 
+			"start": float,
+			"end": float,
+			"label":  string
+}]
+}
+
+\end{lstlisting}
+L'output è formato da un oggetto composto da due array: \texttt{tokens} e \texttt{segments}.\\
+L'array \texttt{tokens} serve a recuperare le informazioni relative alle parole sintetizzate.
+Per ogni parola o token è possibile recuperare, grazie a questo array, l'offset espresso in caratteri rispetto all'inizio e alla fine del testo e l'offset espresso in secondi di inizio e fine rispetto allo stream audio.
+L'array \texttt{segments} serve per recuperare le informazioni relative ai fonemi sintetizzati.
+Per ogni fonema è possibile recuperare l'offset di inizio e fine rispetto allo stream audio, l'etichetta associata al fonema e la proprietà di stress.
+
+\section{Speect}
+Speect è un engine TTS multilingua sviluppato dal gruppo Human Language Technologies del Meraka Institute in Sud Africa. 
+Mivoq ha scelto di utilizzare questo engine e di portarne avanti lo sviluppo per due motivi essenziali:
+\begin{itemize}
+	\item Speect è un engine TTS completo e composto interamente da plug-in.Questo favorisce un'alta modularità e aumenta la capacità di testing;
+	\item Speect è scritto interamente in C seguendo lo standard ISO/IEC 9899:1990. Questo permette di aver una alta portabilità e compatibilità anche con sistemi non recenti. 
+\end{itemize}
+La peculiarità di Speect è che il suo funzionamento si basa su una configurazione chiamata voce. Questo permette di scegliere, ad esempio, quali plug-in devo essere abilitati e le caratteristiche che deve avere la sintesi.
+Speect può essere utilizzato dalle applicazioni esterne e dai sistemi operativi sottoforma di libreria. Nel caso del sistema operativo Microsoft Windows, Speect viene fornito come libreria dinamica (DLL).
+\subsection{Heterogeneous Relation Graph}
+Speect per gestire l'analisi testuale sfrutta un grafo chiamato Heterogeneous Relation Graph.
+Il grafo ha il compito di tenere traccia delle relazioni che ci sono all'interno del testo.
+Le relazioni sono:
+\begin{itemize}
+	\item \textbf{Phrase} gestisce le relazioni che esistono fra le varie frasi. Tra una frase e l'altra sono presenti due archi, uno punta all'elemento precedente e uno al successivo. Inoltre ogni elemento è il padre del corrispondente elemento nella relazione Word, che da accesso alle singole parole.   
+	\item \textbf{Token} gestisce le relazioni che esistono tra i vari tokens. I tokens rappresentano delle unità di testo indivisibili a livello logico.
+	Ogni token è collegato tramite due archi, il successivo e il precedente.
+	Ogni elemento della relazione è il padre del corrispondente elemento nella relazione Word.
+	\item \textbf{Word} gestisce le relazioni che esistono tra le varie parole. Ogni parola è connessa tramite gli archi precedente e successivo.
+	\item \textbf{Syllable} gestisce le relazioni tra le varie sillabe. Ogni sillaba è connessa tramite gli archi precedente e successivo.
+	\item \textbf{Segment} gestisce le relazioni tra i vari fonemi. Ogni fonema è connesso tramite gli archi precedente e successivo.
+	\item \textbf{SylStructure} è l'unione delle relazioni Word, Syllable e Segment, tramite l'arco genitore e figlia.
+\end{itemize}
+Tutte le relazioni possono essere attraversate orizzontalmente tramite le operazioni "Next" e "Previous".
+Solamente le relazioni Phrase, Token e SylStructure possono essere attraversate tramite le operazioni "Parent" e "Daughter".
+%immagine grafo HRG
+L'attraversamento del grafo HRG è stato utile alla costruzione degli eventi SAPI legati ai fonemi, ai visemi e alle parole
+\subsection{Abilitare la serializzazione di un oggetto SAudio in un buffer qualsiasi}
+Per soddisfare il requisito \textbf{ob02} è stato necessario introdurre nuovo codice all'interno di Speect.
+La necessità di quest'operazione derivava dal fatto che l'engine TTS non era in grado di serializzare un oggetto di tipo \texttt{SAudio} in un buffer.
+L'unica funzione a disposizione era \texttt{SObjectSave()} che permetteva di serializzare l'oggetto \texttt{SAudio} come un file dato un percorso.
+Per ovviare al problema è stata stata introdotta una nuova classe chiamata \texttt{SGenericsource} e dei nuovi metodi che adesso andremo a descrivere.
+\subsubsection{Classe SGenericsource}
+La classe \textbf{SGenericsource} estende la classe base \texttt{SDatasource} e ha il compito associare ad un oggetto qualsiasi delle operazioni di input-output, ciò permette la gestione completa del comportamento dell'oggetto.\\\\
+\textbf{Eredita da:}
+\begin{itemize}
+	\item \texttt{SDatasource};
+\end{itemize}
+\textbf{Attributi}
+\begin{itemize}
+	\item \texttt{- ptr: void} riferimento all'oggetto generico che deve essere trattato tramite le funzioni di input-output definite all'esterno; 
+	\item \texttt{- io\_functs: SIOFunctions} oggetto che contiene le funzioni di input-output definite all'esterno. Le funzioni sono \texttt{read}, \texttt{write}, \texttt{seek} e \texttt{close}.  
+\end{itemize}
+\textbf{Metodi}
+\begin{itemize}
+	\item \texttt{+ \_s\_generic\_source\_class\_add(): void} metodo che aggiunge la classe \texttt{SGenericsource} al sistema degli oggetti di Speect.\\
+	\textbf{Argomenti}
+	\begin{itemize}
+		\item \texttt{error: s\_erc} oggetto che tiene traccia degli errori generati da Speect.
+	\end{itemize}
+	\item \texttt{+ SGenericsourceOpen(): SDatasource} metodo che converte un oggetto qualsiasi nel tipo \texttt{SDatasource}. Assieme all'oggetto devono essere fornite anche le funzioni di input-output.\\
+	\textbf{Argomenti}
+	\begin{itemize}
+		\item \texttt{ptr: void} oggetto che deve essere interpretato come \texttt{SDatasource};
+		\item \texttt{mode: char} stringa che indica in quale modalità deve essere trattato l'oggetto;
+		\item \texttt{io\_functs: SIOFunctions} oggetto che raccoglie le funzioni di input e output che servono ad eseguire le operazioni sull'oggetto \texttt{ptr};
+		\item \texttt{error: s\_erc} oggetto che tiene traccia degli errori generati da Speect.
+	\end{itemize} 
+\end{itemize}
+
+\subsubsection{Modulo serialize}
+Il modulo \texttt{serialize} è una raccolta di funzioni che si occupa della serializzazione degli oggetti trattati da Speect attraverso l'Object System.
+Per soddisfare il requisito \textbf{ob02} c'è stato il bisogno di introdurre un nuovo metodo chiamato \texttt{SObjectSaveToDatasource()}.\\\\
+\textbf{Metodi:}
+\begin{itemize}
+	\item \texttt{+ SObjectSaveToDatasource(): void} serve a serializzare un oggetto che appartiene all'Object System di Speect in un oggetto di tipo \texttt{SDatasource}.\\\\
+	\textbf{Argomenti}
+	\begin{itemize}
+		\item \texttt{object: SObject} oggetto che deve essere serializzato;
+		\item \texttt{ds: SDatasource} destinazione della serializzazione dell'oggetto;
+		\item \texttt{format: char} formato di destinazione dell'oggetto che deve essere serializzato;
+		\item \texttt{error: s\_erc} oggetto che traccia gli errori generati da Speect.
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Classe SSerializedFileClass}
+\texttt{SSerializedFileClass} è una classe astratta che estende \texttt{SObjectClass} e viene utilizzata per trattare i file e le sue operazioni di input e output.
+In origine la classe permetteva tramite una sua estensione concreta di serializzare un oggetto solo in un percorso. Per ovviare a questa limitazione si è scelto di introdurre un nuovo metodo chiamato SSerializedFileSaveToDatasource().\\\\
+\textbf{Eredita da:}
+\begin{itemize}
+	\item \texttt{SObjectClass}.
+\end{itemize}
+\textbf{Metodi:}
+\begin{itemize}
+	\item \texttt{+ SSerializedFileSaveToDatasource(): void} serve a serializzare un oggetto che appartiene all'Object System di Speect in un oggetto di tipo \texttt{SDatasource}.\\
+	\textbf{Argomenti}
+	\begin{itemize}
+		\item \texttt{self: SSerializedFile} oggetto che viene utilizzato come riferimento in terno per invocare i metodi della classe; 
+		\item \texttt{object: SObject} oggetto che deve essere serializzato;
+		\item \texttt{ds: SDatasource} destinazione della serializzazione dell'oggetto;
+		\item \texttt{format: char} formato di destinazione dell'oggetto che deve essere serializzato;
+		\item \texttt{error: s\_erc} oggetto che traccia gli errori generati da Speect.
+	\end{itemize}
+\end{itemize}
+ 
+\subsubsection{Classe SRIFFAudioFileClass}
+La classe \texttt{SRIFFAudioFileClass} è un'estensione concreta della classe astratta \texttt{SSerializedFileClass} e ha il compito di serializzare un oggetto di tipo \texttt{SAudio} nel formato riff.
+Per permettere la serializzazione verso un oggetto di tipo \texttt{SDatasource} è stato aggiunto un nuovo metodo chiamato \texttt{SaveToDatasource()}.\\\\
+\textbf{Eredita da:}
+\begin{itemize}
+	\item \texttt{SSerializedFileClass}.
+\end{itemize}
+\textbf{Metodi}
+\begin{itemize}
+	\item \texttt{+ SaveToDatasource(): void} serve a serializzare un oggetto di tipo \texttt{SAudio} in un oggetto di tipo \texttt{SDatasource}.\\\\
+	\textbf{Argomenti}
+	\begin{itemize}
+		\item \texttt{object: SObject} oggetto che deve essere serializzato;
+		\item \texttt{ds: SDatasource} destinazione della serializzazione dell'oggetto;
+		\item \texttt{error: s\_erc} oggetto che traccia gli errori generati da Speect.
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Modulo write}
+Il modulo \texttt{write} fornisce delle funzioni di supporto alla classe \texttt{SRIFFAudioFileClass}. Per implementare il metodo \texttt{SRIFFAudioFileClass::SaveToDatasource()} è stato necessario aggiungere un nuovo metodo al modulo \texttt{write} chiamato \texttt{s\_write\_audio\_riff\_16\_to\_datasource()}.\\\\
+\textbf{Metodi}
+\begin{itemize}
+	\item \texttt{+ s\_write\_audio\_riff\_16\_to\_datasource(): void} serve a serializzare un oggetto di tipo \texttt{SAudio} in un oggetto di tipo \texttt{SDatasource}.\\\\
+	\textbf{Argomenti}
+	\begin{itemize}
+		\item \texttt{object: SObject} oggetto che deve essere serializzato;
+		\item \texttt{ds: SDatasource} destinazione della serializzazione dell'oggetto;
+		\item \texttt{error: s\_erc} oggetto che traccia gli errori generati da Speect.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Aggiunta feature cambio volume, velocità e tonalità}
+Speect, come richiesto dal requisito \textbf{de01}, deve supportare il cambio di velocità e di tonalità della voce. 
+Per soddisfare questo requisito è stato necessario introdurre dei nuovi metodi all'interno del plugin che gestisce l'output audio.
+Il plugin in questione utilizza le API HTS\_engine 1.05 che sono in grado di generare e gestire uno stream audio.\\
+Di seguito andremo ad analizzare i metodi che sono stati aggiunti.\\\\
+\textbf{Metodi:}
+\begin{itemize}
+	\item \texttt{check\_and\_change\_rate\_volume()} serve a modificare il volume o la velocità della voce se è stato rilevato un cambiamento;\\\\
+	\textbf{Argomenti}
+	\begin{itemize}
+		\item \texttt{HTSsynth: SHTSEngineSynthUttProc105} oggetto che rappresenta l'Utterance Processor associato al plugin che utilizza le API HTS\_engine 1.05;
+		\item \texttt{utt: SUtterance} oggetto che rappresenta l'Utterance associata alla sintesi corrente;
+		\item \texttt{error: s\_erc} oggetto che tiene traccia degli errori di Speect.
+	\end{itemize}
+	\item \texttt{check\_and\_change\_tone()} serve a modificare la tonalità della voce se è stato rilevato un cambiamento;\\\\
+	\textbf{Argomenti}
+	\begin{itemize}
+		\item \texttt{HTSsynth: SHTSEngineSynthUttProc105} oggetto che rappresenta l'Utterance Processor associato al plugin che utilizza le API HTS\_engine 1.05;
+		\item \texttt{utt: SUtterance} oggetto che rappresenta l'Utterance associata alla sintesi corrente;
+		\item \texttt{error: s\_erc} oggetto che tiene traccia degli errori di Speect.
+	\end{itemize}
+\end{itemize}
+
