@@ -3,15 +3,15 @@
 
 \newpage
 \section{Architettura}
-L'architettura ad alto livello che si vuole utilizzare è molto semplice. Essa prevede l'implementazione di un componente SAPI~5 e lo sviluppo di un canale di comunicazione con un engine TTS.
-Per facilitare lo svolgimento del progetto si è scelto di utilizzare, in congiunta con il committente, un esempio guida chiamato SALB.
-Il progetto SALB implementa l'interfaccia SAPI~5 e al suo interno esegue delle chiamate ad un engine TTS.
-Partendo da questo esempio andranno sostituite le varie parti che dovranno subire delle modifiche per poi proseguire fino ad ottenere il prodotto desiderato.
+L'architettura ad alto livello che si vuole utilizzare è molto semplice. Essa prevede l'implementazione di un componente SAPI~5 e lo sviluppo di un canale di comunicazione verso un engine TTS.\\
+Per facilitare lo svolgimento del progetto si è scelto di utilizzare, in congiunta con il committente, un esempio guida chiamato SALB.\\
+SALB è un progetto open source pensato per offrire tramite la specifica SAPI~5 le funzionalità di sintesi vocale ottenute dall'utilizzo congiunto di flite e delle voci basate su modelli HMM elaborate da \gls{hts}.\\
+Partendo da questo progetto, andranno analizzate le varie parti che lo compongono e verranno individuate le best practice da introdurre nel progetto di stage.\\
 Riassumendo, i vari componenti che verranno utilizzati sono:
 \begin{description}
 	\item[Interfaccia SAPI~5] interfaccia messa a disposizione dal sistema operativo Microsoft Windows che permette di implementare le funzionalità di sintesi e riconoscimento vocale;
-	\item[Implementazione interfaccia SAPI~5] seguendo la specifica SAPI~5 si andranno ad implementare le varie funzionalità di sintesi vocale che potranno essere messe a disposizione attraverso l'interfaccia. L'implementazione fornita dipenderà da un engine TTS.
-	\item[Engine TTS] engine di sintesi vocale messo a disposizione dall'azienda. Gli engine di sintesi vocale saranno MaryTTS e Speect.
+	\item[Implementazione interfaccia SAPI~5] insieme delle funzionalità in grado di permettere la comunicazione tramite la specifica SAPI~5 tra l'engine TTS scelto e la sua destinazione, che potrà essere il sistema operativo o le applicazioni utente; 
+	\item[Engine TTS] engine di sintesi vocale messo a disposizione dall'azienda, che può essere MaryTTS o Speect.
 \end{description}
 	
 	

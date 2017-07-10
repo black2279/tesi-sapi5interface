@@ -2,20 +2,20 @@
 \thispagestyle{empty}
 \newpage
 \section{Scopo dello stage}
-La tecnologia Text-To-Speech è molto diffusa al giorno d'oggi. In Italia però vi sono poche realtà esistenti che trattano questo campo. Una di esse è Mivoq S.r.l che è presente a Padova.\\
-Mivoq si occupa di sintesi vocale, soprattutto dello sviluppo di engine Text-To-Speech (TTS) e della personalizzazione della voce.\\
-Negli ultimi anni il lavoro di Mivoq si è focalizzato sullo sviluppo di due sistemi di sintesi vocale: uno è MaryTTS e l'altro è Speect.\\
-Arrivati a un buon livello di maturazione dei due prodotti l'azienda ha deciso che era il momento di integrare i due engine TTS con un sistema operativo diverso da quello in cui erano stati sviluppati.\\
-Il sistema operativo in questione era Microsoft Windows.\\
-L'obiettivo dello stage era quindi far interagire i sistemi di sintesi vocale MaryTTS e Speect con il sistema operativo in questione tramite l'implementazione di una interfaccia SAPI~5.\\
-Lo standard Speech Application Program Interface 5 (SAPI~5), sviluppato da Microsoft, permette di interfacciare il sistema operativo Microsoft Windows con un engine TTS tramite l'implementazione dei vari metodi messi a disposizione dall'interfaccia.
-Il risultato finale che si vuole ottenere è la creazione di due moduli che permettano l'interazione degli engine utilizzati dall'azienda con il sistema operativo Windows tramite lo standard SAPI~5.\\
-L'implementazione dovrà coprire la maggior parte delle funzionalità messe a disposizione dagli engine TTS in relazione alle specifiche SAPI~5.
+Lo stage si occupa principalmente della tecnologia \gls{tts}. Essa è molto diffusa al giorno d'oggi e la troviamo in ogni sorta di dispositivo. Basti pensare che è impiegata nei traduttori simultanei, nella robotica e negli assistenti virtuali.\\ 
+In Italia, però vi sono poche realtà che sono impegnate in questo campo e una di queste è Mivoq S.r.l presente a Padova.\\
+Mivoq si occupa principalmente di \gls{sintesivocaleg} e concentra il suo lavoro su due rami:  uno è lo sviluppo di \gls{enginettsg} e l'altro è la personalizzazione della \gls{voceg}.\\
+Negli ultimi anni, il lavoro di Mivoq si è focalizzato sullo sviluppo di due sistemi di sintesi vocale: uno è MaryTTS e l'altro è Speect.\\
+Arrivati a un buon livello di maturazione dei due prodotti, l'azienda ha deciso che era il momento di integrare i due engine TTS con il sistema operativo Microsoft Windows.\\
+Fino a quel momento i sistemi di sintesi vocali erano stati testati e sviluppati solo su sistemi operativi \gls{gnulinuxg}.\\
+L'obiettivo dello stage era quindi quello di far interagire i sistemi di sintesi vocale MaryTTS e Speect con il sistema operativo Microsoft Windows tramite l'utilizzo della specifica SAPI~5.\\
+Lo standard \gls{sapi5}, sviluppato da Microsoft, è un insieme di metodi ed interfacce che, una volta implementati, permettono di far interagire il sistema operativo con gli engine TTS.\\
+Il risultato finale che si vuole ottenere è la creazione di due moduli che rispettino lo standard e forniscano buona parte delle funzionalità messe a disposizione dagli engine TTS al sistema operativo.
 
 \section{Azienda Ospitante}
-Mivoq S.r.l nata nel 2013, con sede a Padova si occupa di tecnologie vocali.\\
-Il campo in cui è coinvolta maggiormente è il Text-To-Speech. Uno dei prodotti di maggior successo dell'azienda è la personalizzazione della voce, ovvero partendo da una voce reale riesce a creare una voce digitale a quella di partenza.\\
-Questo è reso possibile dall'esperienza acquisita durante gli anni in ambito di ricerca e sviluppo nelle tecnologie vocali.
+Mivoq S.r.l è nata nel 2013, ha sede a Padova e si occupa di tecnologie vocali.\\
+Il campo in cui è coinvolta maggiormente è il Text-To-Speech. Uno dei prodotti di maggior successo dell'azienda è la personalizzazione della voce, che consiste nel trasformare la voce reale di una persona in una voce digitale. Le voci digitali create hanno come fine quello di essere utilizzate nei prodotti aziendali.
+Il processo di personalizzazione della voce è reso possibile grazie alle conoscenze acquisite dai componenti presenti all'interno dell'azienda che lavorano nell'ambito delle tecnologie vocali da anni.
 \begin{figure}[H]
 \centering
 \includegraphics{images/logo-mivoq.png}
@@ -23,10 +23,19 @@ Questo è reso possibile dall'esperienza acquisita durante gli anni in ambito di
 \end{figure}
 
 \section{Motivazione}
-Il motivo che mi ha spinto ad accettare questa proposta di stage è stato il mio interesse verso i contenuti multimediali che la sintesi vocale offre.
-Ho nutrito sempre un certo interesse verso l'elaborazione del segnale audio.\\
-Anche se lo stage non era incentrato principalmente su quest'ultimo aspetto, esso lo toccava frequentemente in modo indiretto.\\
-Un altro motivo che mi ha spinto ad affrontare questo stage è stato quello di poter svolgere il lavoro di integrazione per primo, affrontando così tutte le problematiche del caso. 
+Il motivo che mi ha spinto ad accettare questa proposta di stage deriva dall'interesse che nutro nei confronti della sintesi vocale.
+L'aspetto che mi colpisce maggiormente di questa tecnologia è l'elaborazione che viene attuata per tradurre il testo in segnale audio.
+Anche se lo stage non tratterà in dettaglio questo aspetto, l'altro motivo che mi ha spinto ad affrontarlo è quello di poter svolgere il lavoro di integrazione degli engine TTS per primo, affrontando così tutte le problematiche del caso. 
 
 \section{Struttura del documento}
+La struttura del documento si suddividerà nei seguenti capitoli:
+\begin{description}
+	\item [Introduzione] descrizione dello scopo dello stage, presentazione dell'azienda, motivazioni e descrizione della struttura del documento.
+	\item [Pianificazione] presentazione del piano di lavoro, descrizione delle attività che verranno svolte, elenco degli obiettivi da raggiungere e vincoli tecnologici da rispettare.
+	\item [Tecnologie utilizzate] descrizione delle tecnologie utilizzate durante lo stage valutando i vantaggi e gli svantaggi.
+	\item [Progettazione] descrizione dell'architettura che si vuole utilizzare e delle relazioni tra i componenti.
+	\item [Descrizione dei componenti] descrizione dettagliata dei componenti utilizzati che costituiscono il progetto software.
+	\item [Verifica e Validazione] resoconto dei test e del collaudo effettuati.
+	\item [Conclusioni] valutazioni finali sullo stage e descrizione del risultato ottenuto.
+\end{description}
  

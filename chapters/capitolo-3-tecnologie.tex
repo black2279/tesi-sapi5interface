@@ -5,12 +5,12 @@
 \section{Balabolka}
 Balabolka è un applicazione desktop freeware disponibile per il sistema operativo Microsoft Windows che svolge la funzione di lettore. Essa offre la possibilità di leggere dei testi selezionando una voce a disposizione.\\
 Implementa quasi tutti i metodi lato utente dell'interfaccia SAPI~5, supportando in primo luogo la sintesi, la tracciatura delle parole lette e il controllo dei vari parametri della voce.\\
-Questa applicazione è stata usata sia in fase di test che in fase di debug.
+Questa applicazione verrà utilizzata sia in fase di test che in fase di debug.
 \subsection*{Vantaggi}
 \begin{itemize}
 	\item implementa diverse interfacce per tecnologie TTS tra cui SAPI~5;
 	\item dispone di un'interfaccia chiara e semplice;
-	\item l'applicazione è gratis.
+	\item l'applicazione è gratuita.
 \end{itemize}
 \subsection*{Svantaggi}
 \begin{itemize}
@@ -18,9 +18,8 @@ Questa applicazione è stata usata sia in fase di test che in fase di debug.
 \end{itemize}
 
 \section{cURL}
-cURL è un progetto software che fornisce uno strumento a linea di comando e una libreria per comunicare attraverso vari protocolli di rete.
-Nell'attività di stage verrà utilizzato come libreria per comunicare attraverso chiamate HTTP con l'engine MaryTTS.
-L'utilizzo di questa libreria è necessario perchè l'engine risiede in un server che risponde attraverso REST API.
+cURL è un progetto software open-source utilizzato per comunicare attraverso vari protocolli di rete e viene distribuito in due modalità: uno strumento a linea di comando e una libreria.\\
+Durante lo stage cURL verrà impiegato sottoforma di libreria per permettere la comunicazione con il server su cui risiede MaryTTS.
 \subsection*{Vantaggi}
 \begin{itemize}
 	\item compatibile con varie piattaforme;
@@ -34,7 +33,7 @@ L'utilizzo di questa libreria è necessario perchè l'engine risiede in un serve
 \end{itemize}
 \section{C}
 Il C è un linguaggio di programmazione nato nel 1972. Segue i paradigmi di tipo strutturato e procedurale. È considerato un linguaggio di programmazione ad "alto livello" ma integra anche caratteristiche vicine al linguaggio Assembly e al linguaggio macchina.\\
-Questo linguaggio sarà utilizzato per apportare le modifiche a Speect e all'implementazione delle funzioni di supporto delle interfacce SAPI~5.
+Questo linguaggio sarà utilizzato per manutenere Speect e codificare le funzioni di supporto alle implementazioni delle interfacce SAPI~5.
 \subsection*{Vantaggi}
 \begin{itemize}
 	\item mirato all'efficienza;
@@ -44,12 +43,13 @@ Questo linguaggio sarà utilizzato per apportare le modifiche a Speect e all'imp
 \subsection*{Svantaggi}
 \begin{itemize}
 	\item non è orientato agli oggetti;
-	\item per gli utenti neofiti la gestione della memoria può essere complicata e alle volte pericolosa.~\cite{c-advantages-disadvantages}
+	\item per gli utenti programmatori neofiti la gestione della memoria può essere complicata e alle volte pericolosa.
 \end{itemize}
 \section{C++}
 Il C++ è un linguaggio di programmazione orientato agli oggetti, con tipizzazione statica. È stato sviluppato da Bjarne Stroustrup nel 1983 come un miglioramento del linguaggio C.
-Offre molti paradigmi di programmazione che vanno da quello procedurale a quello funzionale.
-Il linguaggio C++ verrà utilizzato per implementare l'interfaccia SAPI sottoforma di DLL.
+Offre molti paradigmi di programmazione che variano dal procedurale al funzionale.
+Il paradigma più utilizzato al giorno d'oggi è quello ad oggetti.\\
+Il linguaggio C++ verrà utilizzato per implementare l'interfaccia SAPI sottoforma di libreria dinamica (\gls{dllg}).
 \subsection*{Vantaggi}
 \begin{itemize}
 	\item è compatibile con il linguaggio C;
@@ -59,16 +59,16 @@ Il linguaggio C++ verrà utilizzato per implementare l'interfaccia SAPI sottofor
 \subsection*{Svantaggi}
 \begin{itemize}
 	\item non supporta nativamente i thread;
-	\item i puntatori, le variabili globali e le funzioni friend lo rendono un linguaggio poco sicuro.~\cite{c++-advantages-disadvantages}
+	\item i puntatori, le variabili globali e le funzioni friend lo rendono un linguaggio poco sicuro.
 \end{itemize}
 \section{Git}
-Git è un software di controllo versione creato da Linus Torvalds nel 2005. Permette di avere un controllo completo della storia di un software e uno sviluppo contemporaneo da parte di più utenti.
+Git è un software di controllo versione creato da Linus Torvalds nel 2005. Questo strumento è stato ideato per facilitare lo sviluppo di progetti software. I due vantaggi principali di questa tecnologia sono: il lavoro può essere svolto da più utenti contemporaneamente e la storia del progetto software può essere gestita in maniera completa.\\
 Questo software verrà utilizzato per versionare lo sviluppo dell'engine Speect e dell'interfaccia SAPI.
 \subsection*{Vantaggi}
 \begin{itemize}
 	\item è più veloce rispetto ad altri software di versionamento (esempio: SVN);
 	\item permette di lavorare in locale;
-	\item è gratuito e open source.~\cite{git-advantages-disadvantages}
+	\item è gratuito e open source.
 \end{itemize}
 \subsection*{Svantaggi}
 \begin{itemize}
@@ -77,7 +77,7 @@ Questo software verrà utilizzato per versionare lo sviluppo dell'engine Speect 
 	\item risoluzione dei conflitti a volte complicata.
 \end{itemize}
 \section{GitLab}
-GitLab è una piattaforma web per la gestione di repository Git scritta da Dmitriy Zaporozhets e Valery Sizov, lanciata nel 2011. Oltre all'organizzazione delle varie repository, essa fornisce la gestione di pagine wiki e da la possibilità di utilizzare un'issue tracking.
+GitLab è una piattaforma web per la gestione di \gls{repositoryg} Git scritta da Dmitriy Zaporozhets e Valery Sizov, lanciata nel 2011. Oltre all'organizzazione delle varie repository, essa fornisce la gestione di pagine wiki e da la possibilità di utilizzare un sistema di \gls{issuetrackingg}.\\
 La piattaforma verrà utilizzata per ospitare lo sviluppo del componente SAPI per Windows.
 \subsection*{Vantaggi}
 \begin{itemize}
@@ -90,26 +90,26 @@ La piattaforma verrà utilizzata per ospitare lo sviluppo del componente SAPI pe
 	\item non è aperta ad altri sistemi di controllo versione.
 \end{itemize}
 \section{GitHub}
-GitHub è una piattaforma web nata principalmente per la gestione di repository Git, sviluppata da GitHub Inc. e lanciata nel 2008. Come altri servizi di hosting di codice sorgente, offre anche uno strumento di issue tracking e la possibilità di creare pagine wiki. Al suo interno è presente anche un altro componente molto utile chiamato Gist. Il suo comportamento è molto simile ad un altro strumento presente online chiamato Pastebin, usato per condividere codice velocemente, l'unica differenza è la presenza del versionamento tramite Git.
-GitHub verrà utilizzato per portare avanti lo sviluppo di Speect e per entrare in possesso della libreria di pos-tagging Hunpos.
+GitHub è una piattaforma web nata principalmente per la gestione di repository Git, sviluppata da GitHub Inc. e lanciata nel 2008. Come altri servizi di hosting di codice sorgente, offre uno strumento di issue tracking e la possibilità di creare pagine wiki. Al suo interno è presente anche un altro componente molto utile chiamato Gist che serve a condividere velocemente delle parti di codice. La particolarità di questo componente è che il codice è sottoposto a versionamento.\\
+GitHub verrà utilizzato per portare avanti lo sviluppo di Speect e per entrare in possesso della libreria di pos-tagging \gls{hunposg}.
 \subsection*{Vantaggi}
 \begin{itemize}
 	\item numero illimitato di repository pubbliche con account gratuito;
 \end{itemize}
 \subsection*{Svantaggi}
 \begin{itemize}
-	\item con un account gratuito non è possibile avere repository private;
+	\item non è possibile avere repository private con un account gratuito;
 	\item non è possibile replicare il servizio su altre macchine.
 \end{itemize}
+%Jansson
 \section{MaryTTS}
-MaryTTS è un motore di sintesi vocale open-source scritto in Java. E' stato sviluppato inizialmente dalla collaborazione di DFKI e dall'Institute of Phonetics dell'Università di Saarland. La versione che verrà impiegata per condurre il lavoro è stata sviluppata appositamente da Mivoq e prende il nome di FATTS MaryTTS. La versione utilizzata presenta delle differenze rispetto all'originale soprattutto a livello di output messi a disposizione.
-Questo engine verrà utilizzato per rispondere alle richieste provenienti dall'interfaccia SAPI.
+MaryTTS è un motore di sintesi vocale open-source scritto in Java. È stato sviluppato inizialmente dalla collaborazione di DFKI e dall'Institute of Phonetics dell'Università di Saarland. La versione che verrà impiegata per condurre il lavoro è stata sviluppata appositamente da Mivoq e prende il nome di Flexible-Adaptive-Text-To-Speech (FATTS). La versione utilizzata presenta delle differenze rispetto all'originale soprattutto a livello di interfaccia e di output messi a disposizione.
 \subsection*{Vantaggi}
 \begin{itemize}
 	\item è gratuito e open source;
-	\item ha un'alta portabilità perchè è scritto in Java;
+	\item ha un'alta portabilità;
 	\item l'engine è pensato come un server HTTP;
-	\item la versione proposta da Mivoq mette a disposizione delle Web API che rispondono in formato JSON;
+	\item la versione proposta da Mivoq mette a disposizione delle Web API che rispondono in formato \gls{jsong};
 	\item supporta molte lingue.
 \end{itemize}
 \subsection*{Svantaggi}
@@ -118,8 +118,8 @@ Questo engine verrà utilizzato per rispondere alle richieste provenienti dall'i
 	\item la modifica e l'implementazione di nuove features non è sempre semplice.
 \end{itemize}
 \section{Microsoft Windows}
-Microsoft Windows è un sistema operativo nato nel 1985 e sviluppato dalla Microsoft Corporation. La sua caratteristica principale consiste nella sua interfaccia grafica composta da finestre. A differenza di altri sistemi operativi (ad esempio Unix-like) la parte grafica non è opzionale. Ad oggi, Windows è uno dei sistemi operativi più diffusi sul mercato coprendo dispositivi come PC, smartphone e tablet. 
-Windows è il sistema operativo dove verrà implementata e sviluppata l'interfaccia SAPI per i due engine di sintesi vocale.
+Microsoft Windows è un sistema operativo nato nel 1985 e sviluppato dalla Microsoft Corporation. La sua caratteristica principale consiste nella sua interfaccia grafica composta da finestre. A differenza di altri sistemi operativi (ad esempio Unix-like) la parte grafica non è opzionale. Ad oggi, Windows è uno dei sistemi operativi più diffusi sul mercato coprendo dispositivi come PC, smartphone e tablet.\\
+Windows è il sistema operativo dove verranno implementate e sviluppate le interfacce SAPI per i due engine di sintesi vocale.
 \subsection*{Vantaggi}
 \begin{itemize}
 	\item è presente su molti dispositivi;
@@ -129,7 +129,7 @@ Windows è il sistema operativo dove verrà implementata e sviluppata l'interfac
 \begin{itemize}
 	\item è a pagamento;
 	\item non è open source;
-	\item non sempre offre dei tools nativi per condurre uno sviluppo lineare.
+	\item non sempre facilita il lavoro del programmatore.
 \end{itemize}
 \section{NSIS}
 Nullsoft Scriptable Install System (NSIS) è un sistema di installazione guidato da script creato dalla Nullsoft nel 2000. Il suo scopo è quello di automatizzare e facilitare l'installazione di software di terze parti in ambiente Windows. Permette di creare pacchetti di installazione in diverse lingue e utilizzando diversi tipi di compressione.
@@ -143,37 +143,38 @@ Nullsoft Scriptable Install System (NSIS) è un sistema di installazione guidato
 \end{itemize}
 \subsection*{Svantaggi}
 \begin{itemize}
-	\item è disponibile solo per la piattaforma x86;
+	\item è disponibile solo per la piattaforma x86.
 \end{itemize}
 \section{SAPI~5}
-Microsoft Speech API 5 è un insieme di interfacce e di funzioni sviluppate da Microsoft per integrare nel proprio sistema operativo la sintesi vocale e il riconoscimento vocale. Verrà utilizzata la versione SAPI~5 perchè rispetto alle versioni precedenti non è dipendente dagli engine TTS che si vogliono utilizzare. Riassumendo, SAPI~5 si pone come un middleware che permette di interfacciare applicazioni utente con engine TTS e viceversa. Questo fa si che scrivendo un componente SAPI~5 che si interfacci con un engine TTS possa essere riutilizzato da diverse applicazioni.
+Microsoft Speech API 5 è un insieme di interfacce e di funzioni sviluppate da Microsoft per integrare nel proprio sistema operativo la sintesi vocale e il riconoscimento vocale. La versione verrà utilizzata è la numero 5 perchè rispetto alle versioni precedenti non è dipendente dagli engine TTS che si vogliono utilizzare. Riassumendo, SAPI~5 si pone come un middleware che permette di interfacciare applicazioni utente con engine TTS e viceversa. Questo fa si che scrivendo un componente SAPI~5 che si interfacci con un engine TTS possa essere riutilizzato da diverse applicazioni.
 \subsection*{Vantaggi}
 \begin{itemize}
-	\item permette di rendere usufruibile facilmente un engine TTS al sistema operativo;
+	\item permette di rendere facilmente usufruibile un engine TTS al sistema operativo;
 	\item un'applicazione che implementa un'interfaccia SAPI~5 può utilizzare tutti i servizi vocali che seguono la medesima specifica;
 	\item offre un'interfaccia semplice ma allo stesso tempo avanzata.
 \end{itemize}
 \subsection*{Svantaggi}
 \begin{itemize}
-	\item la documentazione alle volte risulta imprecisa e approssimativa;
+	\item la documentazione alle volte risulta imprecisa e approssimativa.
 \end{itemize}
 \section{Speect}
-Speect è un engine TTS multilingua completo scritto in C sviluppato dal gruppo Human Language Tecnologies del Meraka Institute , CSIR, in Sud-Africa a partire dal 2010. Speect è un engine TTS pensato come un sistema a plug-in per favorire la modularità. Questo aspetto permette di sviluppare e sostituire plug-in in modo indipendente aumentando di conseguenza anche la testabilità. La versione che si andrà ad utilizzare è stata sviluppata da Mivoq e porta con sè alcuni miglioramenti rispetto all'originale.
+Speect è un engine TTS multilingua completo, scritto in C e sviluppato dal gruppo Human Language Technologies del Meraka Institute, CSIR, in Sud-Africa a partire dal 2010. Speect è un engine TTS pensato come un sistema a \gls{pluging} per favorire la modularità. Questo aspetto permette di sviluppare e sostituire plugin in modo indipendente, aumentando di conseguenza anche la testabilità.\\
+La versione che si andrà ad utilizzare è stata sviluppata da Mivoq e porta con sè alcuni miglioramenti rispetto all'originale.
 \subsection*{Vantaggi}
 \begin{itemize}
 	\item è multilingua;
 	\item è open source;
-	\item è scritto in C ANSI 90;
+	\item è scritto in ANSI C90;
 	\item è portabile;
-	\item altà modularità;
-	\item ampia possibilità di configurazione;
-	\item permette di testare i vari plug-in separatamente.
+	\item dispone di un'alta modularità;
+	\item ha ampia possibilità di configurazione;
+	\item permette di testare i vari plugin separatamente.
 \end{itemize}
 \subsection*{Svantaggi}
 Non stati rilevati svantaggi enormi nell'utilizzo di questo software.   
 \section{TTSApplication}
-TTSApplication è un'applicazione fornita da Microsoft pensata per testare le varie funzionalità messe a disposizione dalla specifica SAPI~5. Quest'applicazione ha il vantaggio di essere accompagnata dal codice sorgente e quindi può essere modificata e ricompilata. Il codice sorgente è disponibile sulla piattaforma Github.com a questo indirizzo \url{https://github.com/Microsoft/Windows-classic-samples/tree/master/Samples/Win7Samples/winui/speech/ttsapplication}.
-La versione fornita da Microsoft permette di: sintetizzare il testo con qualsiasi voce presente nel sistema operativo, visualizzare gli eventi SAPI che vengono lanciati e animare un semplice avatar attraverso i visemi generati dalla voce.
+TTSApplication è un'applicazione fornita da Microsoft pensata per testare le varie funzionalità messe a disposizione dalla specifica SAPI~5. Quest'applicazione ha il vantaggio di essere accompagnata dal codice sorgente e quindi può essere modificata e ricompilata. Il codice sorgente è disponibile sulla piattaforma GitHub al seguente indirizzo \url{https://github.com/Microsoft/Windows-classic-samples/tree/master/Samples/Win7Samples/winui/speech/ttsapplication}.
+La versione fornita da Microsoft permette di: sintetizzare il testo con qualsiasi voce presente nel sistema operativo, visualizzare gli eventi SAPI che vengono lanciati e animare un semplice avatar attraverso i visemi generati dalla voce.\\
 Questo software verrà utilizzato per condurre i test e la fase di debug del componente SAPI che verrà sviluppato. 
 \subsection*{Vantaggi}
 \begin{itemize}
@@ -185,7 +186,7 @@ Questo software verrà utilizzato per condurre i test e la fase di debug del com
 \subsection*{Svantaggi}
 Non stati rilevati svantaggi enormi nell'utilizzo di questo software.
 \section{Visual Studio 2015}
-Visual Studio 2015 è un IDE scritto da Microsoft e lanciato nel 2015. Esso comprende tutto il necessario per scrivere principalmente applicazioni per il sistema operativo Windows. 
+Visual Studio 2015 è un \gls{ide} sviluppato da Microsoft e lanciato nel 2015. Si pone come strumento principale per sviluppare applicazioni per il sistema operativo Windows.\\ 
 I linguaggi di programmazione supportati sono:
 \begin{itemize}
 	\item C;
@@ -199,23 +200,23 @@ I linguaggi di programmazione supportati sono:
 	\item Javascript;
 	\item Typescript;
 \end{itemize}
-Visual Studio nel suo pacchetto comprende i compilatori, editor, designer e altri strumenti utili in fase di test e di debug. Inoltre possiede sistemi di versionamento integrati tra i quali Git.
+Visual Studio nel suo pacchetto comprende compilatori, editor, designer e altri strumenti utili in fase di test e di debug. Inoltre possiede sistemi di versionamento integrati tra i quali Git.\\
 Offre un'ottima gestione delle configurazioni e una buona organizzazione dei file all'interno dei progetti creati.
 \subsection*{Vantaggi}
 \begin{itemize}
 	\item alcune versioni sono presenti in forma gratuita;
 	\item supporta molti linguaggi;
-	\item è possibile estendere le sue funzionalità tramite plug-in;
+	\item è possibile estendere le sue funzionalità tramite plugin;
 	\item sono presenti template di progetto già pronti;
 	\item copre lo sviluppo delle piattaforme mobili (Android, iOS, Windows Phone);
-	\item debugger avanzato;
+	\item possiede un debugger avanzato;
 	\item è predisposto per l'esecuzione dei test e la loro gestione.
 \end{itemize}
 \subsection*{Svantaggi}
 \begin{itemize}
-	\item è molto oneroso in termini di memoria sul disco, anche tenendo una configurazione minima;
-	\item il sistema Intellisense non è sempre preciso;
-	\item se si utilizza il compilatore MSVC, il codice generato ha un'esecuzione più lenta rispetto a quella del GCC.
+	\item è molto oneroso in termini di memoria sul disco, anche optando per una configurazione minima;
+	\item il sistema IntelliSense non è sempre preciso;
+	\item se si utilizza il compilatore \gls{msvc}, il codice generato ha un'esecuzione più lenta rispetto a quella generata dall compilatore C incluso in \gls{gcc}.
 \end{itemize}
 
 

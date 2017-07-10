@@ -3,8 +3,8 @@
 
 \newpage
 \section{Piano di Lavoro}
-Prima di iniziare l'attività di stage è stato stilato assieme al tutor aziendale Giulio Paci e al relatore Paolo Baldan il piano di lavoro.\\
-Esso si componeva principalmente di due macro-attività:
+Per ottenere una buona organizzazione delle attività di stage, è stato stilato assieme al tutor aziendale Giulio Paci e al relatore Paolo Baldan il piano di lavoro.\\
+Le ore di lavoro erano suddivise principalmente in due macro-attività:
 \begin{itemize}
 	\item Studio delle tecnologie TTS
 	\item Implementazione delle interfacce SAPI~5 per gli engine MaryTTS e Speect
@@ -15,23 +15,22 @@ Esso si componeva principalmente di due macro-attività:
 \begin{description}[style=unboxed]
 	\item[Studio delle tecnologie TTS] Questa attività serviva ad affrontare lo studio delle tecnologie TTS proposte. Gli ambiti di studio coinvolti erano:
 	\begin{itemize}
-		\item SAPI~5
+		\item specifica SAPI~5
 		\item MaryTTS
 		\item Speect
 	\end{itemize}
-	Per quanto riguarda lo studio di SAPI~5 si trattava di consultare la documentazione messa a disposizione dalla Microsoft Developer Network (MSDN) e di trovare le best practice per l'implementazione dell'interfaccia.\\
-	Per MaryTTS e Speect il compito non si fermava solamente allo studio del loro funzionamento, ma bisognava anche renderli funzionanti nel sistema ospitante ovvero Microsoft Windows.\\
-	I compiti da svolgere erano: rendere operativi i due engine per gli utenti e fornire ai programmatori futuri delle condizioni di sviluppo idonee.
+	Lo studio della specifica SAPI~5 consisteva nel consultare la documentazione messa a disposizione dalla \gls{msdn} e trovare le best practice per l'implementazione dell'interfaccia.\\
+	Per quanto riguardava MaryTTS e Speect, il lavoro si divideva in due parti: una era lo studio del loro funzionamento e l'altra consisteva nel renderli operativi all'interno di Microsoft Windows.\\
 	
 	\item[Implementazione delle interfacce SAPI~5 per gli engine MaryTTS e Speect]
-	Questa attività serviva ad implementare le interfacce SAPI~5. L'attività di sviluppo comprendeva oltre alla stesura del codice anche la progettazione, il testing e il debug.
-	L'implementazione delle due interfacce risultava diversa nella parte di comunicazione tra l'interfaccia e gli engine.\\
-	MaryTTS doveva comunicare tramite chiamate HTTP con l'interfaccia SAPI~5, invece Speect tramite chiamate a funzioni C.  
+	Questa attività serviva ad implementare le interfacce SAPI~5 e a creare l'infrastruttura necessaria per permettere la comunicazione tra gli engine TTS e la specifica. Le fasi di questa attività erano la progettazione, la codifica, il testing e il debug.\\
+	Per ogni engine TTS, però bisognava sviluppare un'implementazione differente. Per MaryTTS il vincolo era l'utilizzo della libreria cURL per effettuare le chiamate \gls{httpg} al server, invece per Speect il vincolo era l'utilizzo delle \gls{api} scritte in C presenti all'interno della libreria dell'engine.
+	  
 \end{description}
 
 \subsection{Preventivo}
 
-La suddivisione delle ore concordata insieme al tutor aziendale Giulio Paci e al relatore Paolo Baldan è la seguente:
+La suddivisione delle ore concordata insieme al tutor aziendale Giulio Paci e al relatore Paolo Baldan era la seguente:
 
 \begin{center}
 	
@@ -49,7 +48,7 @@ La suddivisione delle ore concordata insieme al tutor aziendale Giulio Paci e al
 		\multicolumn{2}{|l|}{240}	&	\multicolumn{2}{l|}{Implementazione Engine TTS SAPI~5}\\
 		\hline
 		
-		\multirow{3}{1cm}{ }    &            40            &            \hspace{5mm}•\hspace{2mm}            & Creazione di un esempio minimale di engine TTS SAPI~5 utilizzando CURL \\
+		\multirow{3}{1cm}{ }    &            40            &            \hspace{5mm}•\hspace{2mm}            & Creazione di un esempio minimale di engine TTS SAPI~5 utilizzando MaryTTS tramite la libreria cURL \\
 		\cline{2-2}
 		&            80            &            \hspace{5mm}•\hspace{2mm}            &            Creazione di un esempio minimale di engine TTS SAPI~5 utilizzando Speect \\
 		\cline{2-2}
@@ -65,10 +64,10 @@ La suddivisione delle ore concordata insieme al tutor aziendale Giulio Paci e al
 Lo stage ha come obiettivo finale la creazione di un prodotto.
 Il risultato che si vuole ottenere è l'integrazione degli engine TTS MaryTTS e Speect con il sistema operativo Microsoft Windows. Tutto ciò dovrà essere ottenuto grazie all'implementazione delle interfacce SAPI~5.
 L'utilizzo della specifica SAPI~5 renderà possibile la fruizione degli engine TTS a livello di sistema operativo, questo significa che le applicazioni utente potranno essere sia Windows stesso che altre applicazioni come ad esempio lettori, avatar o assistenti vocali.\\
-Le interfacce dovranno fornire la possibilità di controllare dei parametri della voce che dovranno essere:
+Le interfacce dovranno fornire la possibilità di controllare i seguenti parametri della voce:
 \begin{itemize}
 	\item la velocità;
-	\item la tonalità (o pitch);
+	\item la tonalità (o pitch).
 \end{itemize}
 
 
