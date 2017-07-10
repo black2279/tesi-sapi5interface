@@ -13,8 +13,35 @@
 \newacronym[description={\glslink{ttsg}{Text-To-Speech}}]
    {tts}{TTS}{Text-To-Speech}
    
-\newacronym[description={\glslink{sapi5g}{Speech Application Program Interface 5}}]
-   {SAPI 5}{SAPI 5}{Speech Application Program Interface 5}
+\newacronym
+   {sapi5}{SAPI 5}{Speech Application Program Interface 5}
+   
+\newacronym[description={\glslink{msdng}{Microsoft Developer Network}}]
+   {msdn}{MSDN}{Microsoft Developer Network}
+   
+\newacronym[description={\glslink{httpg}{HyperText Transfer Protocol}}]
+   {http}{HTTP}{HyperText Transfer Protocol}
+   
+\newacronym[description={\glslink{dllg}{Dynamic-Link Library}}]
+{dll}{DLL}{Dynamic Loading Library}
+
+\newacronym[description={\glslink{jsong}{JavaScript Object Notation}}]
+{json}{JSON}{JavaScript Object Notation}
+
+\newacronym[description={\glslink{riffg}{Resource Interchange File Format}}]
+{riff}{RIFF}{Resource Interchange File Format}
+
+\newacronym[description={\glslink{ideg}{Integrated Development Enviroment}}]
+{ide}{IDE}{Integrated Development Enviroment}
+
+\newacronym
+{msvc}{MSVC}{Microsoft Visual C}
+
+\newacronym
+{gcc}{GCC}{GNU Compiler Collection}
+
+\newacronym[description={\glslink{htsg}{HMM-based Speech Synthesis System}}]
+{hts}{HTS}{HMM-based Speech Synthesis System}
 
 %**************************************************************
 % Glossario
@@ -27,6 +54,134 @@
     text=Application Program Interface,
     sort=api,
     description={in informatica con il termine \emph{Application Programming Interface API} (ing. interfaccia di programmazione di un'applicazione) si indica ogni insieme di procedure disponibili al programmatore, di solito raggruppate a formare un set di strumenti specifici per l'espletamento di un determinato compito all'interno di un certo programma. La finalità è ottenere un'astrazione, di solito tra l'hardware e il programmatore o tra software a basso e quello ad alto livello semplificando così il lavoro di programmazione}
+}
+
+\newglossaryentry{enginettsg}
+{
+	name=Engine Text-To-Speech,
+	text=engine Text-To-Speech,
+	sort=engine tts,
+	description={sistema di sintesi vocale}
+}
+
+\newglossaryentry{gnulinuxg}
+{
+	name=GNU/Linux,
+	text=GNU/Linux,
+	sort=gnu/linux,
+	description={sistema operativo che adotta un kernel Linux e moduli appartenenti al sistema GNU}
+}
+
+\newglossaryentry{voceg}
+{
+	name=Voce,
+	text=voce,
+	sort=voce,
+	description={configurazione che adotta il sistema di sintesi vocale per convertire il testo in parlato.}
+}
+
+\newglossaryentry{msdng}
+{
+	name=\glslink{msdn}{MSDN},
+	text=Microsoft Developer Network,
+	sort=msdn,
+	description={è la divisione di Microsoft incaricata di mantenere i rapporti con gli sviluppatori e gli amministratori di sistema. Attraverso i suoi siti fornisce informazioni utili, documentazione e da modo alla community di sviluppatori di sostenere discussioni aperte a tutti}
+}
+
+\newglossaryentry{httpg}
+{
+	name=\glslink{http}{HTTP},
+	text=HTTP,
+	sort=http,
+	description={ (protocollo di trasferimento di un ipertesto) è un protocollo a livello applicativo usato come principale sistema per la trasmissione d'informazioni sul web ovvero in un'architettura tipica client-server.Le specifiche del protocollo sono gestite dal World Wide Web Consortium (W3C). Un server HTTP generalmente resta in ascolto delle richieste dei client sulla porta 80 usando il protocollo TCP a livello di trasporto}
+}
+
+\newglossaryentry{dllg}
+{
+	name=\glslink{dll}{DLL},
+	text=DLL,
+	sort=dll,
+	description={In informatica, una dynamic-link library (termine inglese, tradotto in italiano con libreria a collegamento dinamico) è una libreria software che viene caricata dinamicamente in fase di esecuzione, invece di essere collegata staticamente a un eseguibile in fase di compilazione. Queste librerie sono note con l'acronimo DLL, che è l'estensione del file che hanno nel sistema operativo Microsoft Windows, o anche con il termine librerie condivise (da shared library, usato nella letteratura dei sistemi Unix). Nei sistemi che usano ELF come formato dei file eseguibili, come ad esempio Solaris o Linux, sono anche note come ".so", abbreviazione di Shared Object}
+}
+
+\newglossaryentry{repositoryg}
+{
+	name=Repository,
+	text=repository,
+	sort=repository,
+	description={spazio dedicato ad ospitare dati o progetti software}
+}
+
+\newglossaryentry{issuetrackingg}
+{
+	name=Issue Tracking,
+	text=issue tracking,
+	sort=issue tracking,
+	description={caratteristica di un sistema che è in grado di tenere traccia dei problemi legati ad un progetto software}
+}
+
+\newglossaryentry{hunposg}
+{
+	name=Hunpos,
+	text=Hunpos,
+	sort=hunpos,
+	description={progetto software creato per effettuare il pos-tagging dei testi che devono essere sintetizzati}
+}
+
+\newglossaryentry{jsong}
+{
+	name=\glslink{json}{JSON},
+	text=JSON,
+	sort=json,
+	description={in informatica, nell'ambito della programmazione web, JSON, acronimo di JavaScript Object Notation, è un formato adatto all'interscambio di dati fra applicazioni client-server}
+}
+
+\newglossaryentry{ideg}
+{
+	name=\glslink{ide}{IDE},
+	text=Integrated Development Enviroment,
+	sort=ide,
+	description={In informatica un ambiente di sviluppo integrato (in lingua inglese integrated development environment ovvero IDE, anche integrated design environment o integrated debugging environment, rispettivamente ambiente integrato di progettazione e ambiente integrato di debugging) è un software che, in fase di programmazione, aiuta i programmatori nello sviluppo del codice sorgente di un programma. Spesso l'IDE aiuta lo sviluppatore segnalando errori di sintassi del codice direttamente in fase di scrittura, oltre a tutta una serie di strumenti e funzionalità di supporto alla fase di sviluppo e debugging}
+}
+
+\newglossaryentry{htsg}
+{
+	name=\glslink{hts}{HTS},
+	text=HTS,
+	sort=hts,
+	description={è un sistema che trasforma modelli HMM in forme d'onda per ottenere il parlato della sintesi vocale}
+}
+
+\newglossaryentry{tokeng}
+{
+	name=Token,
+	text=token,
+	sort=token,
+	description={ è un oggetto che rappresenta una risorsa all'interno del sistema come ad esempio una voce}
+}
+
+\newglossaryentry{fonemag}
+{
+	name=Fonema,
+	text=fonema,
+	sort=fonema,
+	description={è una unità linguistica dotata di valore distintivo, ossia una unità che può produrre variazioni di significato se scambiata con un'altra unità}
+}
+
+\newglossaryentry{visemag}
+{
+	name=Visema,
+	text=visema,
+	sort=visema,
+	description={movimento espressivo del viso; con particolare riferimento all'articolazione della muscolatura facciale mentre si parla}
+}
+
+\newglossaryentry{janssong}
+{
+	name=Jansson,
+	text=Jansson,
+	sort=jansson,
+	description={libreria scritta C per codificare, decodificare e manipolare dati in formato JSON}
 }
 
 \newglossaryentry{umlg}
@@ -42,29 +197,78 @@
 	name=\glslink{tts}{TTS},
 	text=Text-To-Speech,
 	sort=tts,
-	description={?}
+	description={termine utilizzato per indicare sistemi(software o hardware) che sono in grado di convertire il testo in parlato. Molto spesso indica la sintesi vocale}
 }
 
-\newglossaryentry{sapi5g}
+\newglossaryentry{sintesivocaleg}
 {
-	name=\glslink{SAPI~5}{SAPI~5},
-	text=Speech Application Program Interface 5,
-	sort=sapi5,
-	description={?}
+	name=Sintesi Vocale,
+	text=sintesi vocale,
+	sort=sintesi vocale,
+	description={è la tecnica per la riproduzione artificiale della voce umana. Un sistema usato per questo scopo è detto sintetizzatore vocale e può essere realizzato tramite software o via hardware. I sistemi di sintesi vocale sono noti anche come sistemi text-to-speech (TTS) (in italiano: da testo a voce) per la loro possibilità di convertire il testo in parlato}
 }
 
-\newglossaryentry{speectg}
+\newglossaryentry{utteranceg}
 {
-	name=\glslink{speect}{Speect},
-	text=Speect,
-	sort=speect,
-	description={?}
+	name=Utterance,
+	text=utterance,
+	sort=utterance,
+	description={è il termine utilizzato per indicare l'insieme composto da un testo e le caratteristiche della voce con cui deve essere sintetizzato}
 }
 
-\newglossaryentry{maryttsg}
+\newglossaryentry{utteranceprocg}
 {
-	name=\glslink{marytts}{MaryTTS},
-	text=MaryTTS,
-	sort=marytts,
-	description={?}
+	name=Utterance Processor,
+	text=Utterance Processor,
+	sort=utterance processor,
+	description={componente che ricava informazioni dall'utterance e ne applica delle modifiche}
 }
+
+\newglossaryentry{callbackg}
+{
+	name=Callback,
+	text=callback,
+	sort=callback,
+	description={in programmazione, una callback è, in genere, una funzione, che viene passata come parametro ad un'altra funzione. In particolare, quando ci si riferisce alla callback richiamata da una funzione, la callback viene passata come parametro alla funzione chiamante. In questo modo la chiamante può realizzare un compito specifico (quello svolto dalla callback) che non è, molto spesso, noto al momento della scrittura del codice}
+}
+
+\newglossaryentry{restfulg}
+{
+	name=RESTful,
+	text=RESTful,
+	sort=restful,
+	description={Representational state transfer (REST) o RESTful indica la modalità con cui operano dei servizi web su Internet. Un servizio web si dice RESTful se permette ai sistemi di accedere alle rappresentazioni testuali delle sue risorse o di modificarle attraverso un insieme uniforme e predefinito di operazioni prive di stato}
+}
+
+\newglossaryentry{objectsystemg}
+{
+	name=Object System,
+	text=Object System,
+	sort=object system,
+	description={sistema che supporta la programmazione ad oggetti all'interno del linguaggio C utilizzando le strutture ISO C come classi ed oggetti}
+}
+
+\newglossaryentry{serializzazioneg}
+{
+	name=Serializzazione,
+	text=serializzazione,
+	sort=serializzazione,
+	description={processo per salvare un oggetto in supporto di memorizzazione lineare (file o area di memoria) o per trasmetterlo su una connesione di rete}
+}
+
+\newglossaryentry{riffg}
+{
+	name=\glslink{riff}{RIFF},
+	text=RIFF,
+	sort=riff,
+	description={ (Resource Interchange File Format) è un formato di contenitore generico per file utilizzato per memorizzare dati attraverso chunks associati a delle etichette. Questo formato è impiegato principalmente in campo multimediale (audio o video). Le implementazioni più conosciute sviluppate da Microsoft sono AVI, ANI e WAV}
+}
+
+\newglossaryentry{pluging}
+{
+	name=Plugin,
+	text=plugin,
+	sort=plugin,
+	description={in campo informatico è un programma non autonomo che interagisce con un altro programma per ampliarne o estenderne le funzionalità originarie}
+}
+
