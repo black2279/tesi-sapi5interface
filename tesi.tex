@@ -7,7 +7,6 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{subfiles}
-\usepackage[toc, acronym]{glossaries}
 \usepackage{enumitem}
 \usepackage{multirow}
 \usepackage{biblatex}
@@ -37,11 +36,19 @@
 \renewcommand*\arraystretch{1.4} % tables padding
 
 %------------------------------ costruisci glossario
+\usepackage[toc, acronym]{glossaries}
 \subfile{extra/glossario}
 \makeglossaries
 
+\hyphenation
+{
+	MaryTTS
+	Speect
+}
+
 
 \begin{document}
+\nocite{*}
 \frontmatter
 
 \begin{titlepage} %------------------------------ TITLE PAGE
@@ -57,11 +64,12 @@
   \scshape{\Large{\bfseries{Università degli Studi di Padova}}} \\
   \hline \\
   \scshape{\Large{Dipartimento di Matematica}} \\
+  \scshape{\Large{"Tullio Levi-Civita"}}\\
   \end{tabular}
   \end{table}
 \end{minipage}
 
-\vspace{1cm}
+\vspace{0.3cm} %old value 1cm
 \emph{\Large{Corso~di~Laurea~in~Informatica}} \\
 \vspace{1.5cm}
 \scshape{\Large{\bfseries{Implementazione di una interfaccia~SAPI~5 mediante i sistemi di sintesi vocale MaryTTS e Speect}}} \\
@@ -73,6 +81,7 @@
   \hspace{45pt} \textit{Laureando} \hspace{160pt} \textit{Relatore}\\
   \vspace{5pt}
   \hspace{30pt} \large{\textbf{Cristian Andrighetto}} \hspace{70pt} \large{\textbf{Prof. Paolo Baldan}}\\
+  \hspace{30pt} \large{\textbf{1069767}}
   \vspace{10pt}
 \end{flushleft}
 \end{normalsize}
@@ -117,7 +126,6 @@
 \subfile{chapters/capitolo-5-descrizione-dei-componenti}
 \subfile{chapters/capitolo-6-verifica-e-validazione}
 \subfile{chapters/capitolo-7-conclusioni}
-
 \backmatter
 
 %------------------------------ GLOSSARIO
