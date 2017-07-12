@@ -71,8 +71,8 @@ Si preoccupa di eseguire le chiamate all'engine TTS e di trattare l'output audio
 	\textbf{Argomenti}
 	\begin{itemize}
 		\item \texttt{dwSpeakFlags: DWORD} contiene i valori dei flags che descrivono le caratteristiche dell'input;
-		\item \texttt{rguidFormatId: GUID} identificatore del formato di uscita della sintesi vocale. I possibili valori possono essere \texttt{SPDFID\_Text} o \texttt{SPDFID\_WAVEFORMATEX};
-		\item \texttt{pWaveFormatEx: WAVEFORMATEX} puntatore alla struttura che descrive il formato d'uscita se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_WAVEFORMATEX}. L'argomento ha valore \texttt{NULL} se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_Text};
+		\item \texttt{rguidFormatId: GUID} identificatore del formato di uscita della sintesi vocale. I possibili valori possono essere \texttt{SPDFID\_Text} o\\ \texttt{SPDFID\_WAVEFORMATEX};
+		\item \texttt{pWaveFormatEx: WAVEFORMATEX} puntatore alla struttura che descrive il formato d'uscita se il parametro \texttt{rguidFormatId} ha valore\\ \texttt{SPDFID\_WAVEFORMATEX}. L'argomento ha valore \texttt{NULL} se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_Text};
 		\item \texttt{pTextFragList: SPVTEXTFRAG} lista concatenata di \texttt{SPVTEXTFRAG} usata come input per la sintesi vocale. Un elemento \texttt{SPVTEXTFRAG} è formato da un frammento di testo decorato da altri atttributi che ne descrivono meglio le caratteristiche;
 		\item \texttt{pOutputSite: ISpTTSEngineSite} puntatore all'interfaccia\\ \texttt{ISpTTSEngineSite} che viene utilizzato per scrivere l'audio nel buffer dedicato e aggiungere gli eventi SAPI alla coda.
 	\end{itemize}  
@@ -155,11 +155,6 @@ Un altro parametro della voce su cui è possibile agire è la tonalità. In ques
 
 \newpage
 \section{Implementazione Interfaccia SAPI~5 per MaryTTS}
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics{images/sapi5-interface.png}
-%	\caption{Interfaccia SAPI~5}
-%\end{figure}
 L'implementazione prevede l'utilizzo dell'engine MaryTTS fornito da Mivoq. Il sistema di sintesi vocale è scritto in Java e non fornisce una libreria per affrontare lo sviluppo. MaryTTS però dispone di un'architettura client-server che ha il vantaggio di poter essere interrogata attraverso richieste HTTP. Nella versione fornita da Mivoq, ovvero FATTS, l'engine è in grado di rispondere in modo \gls{restfulg} e presentare il suo output in formato JSON.\\ 
 Il componente che si andrà a sviluppare farà uso di due librerie:
 \begin{itemize}
@@ -197,7 +192,7 @@ FATTS si occupa quindi di gestire gli eventi, le azioni provenienti dalle applic
 \begin{itemize}
 	\item \texttt{+ FATTS()} è costruttore della classe che serve ad inizializzare le proprietà legate alla voce;
 	\item \texttt{+ FinalConstruct(): HRESULT} override del metodo ereditato dalla classe \texttt{CComObjectRootEx} che serve per eseguire le inizializzazioni necessarie dell'oggetto;
-	\item \texttt{+ FinalRelease(): void} override del metodo ereditato dalla classe \texttt{CComObjectRootEx} che serve per eseguire la pulizia dell'oggetto prima di distruggerlo;
+	\item \texttt{+ FinalRelease(): void} override del metodo ereditato dalla classe\\ \texttt{CComObjectRootEx} che serve per eseguire la pulizia dell'oggetto prima di distruggerlo;
 	\item \texttt{+ SetObjectToken(): HRESULT} metodo che serve per recuperare le informazioni relative alla voce scritte nel registro di Windows. Questo metodo andrà ad impostare l'attributo \texttt{voiceToken}.\\\\
 	\textbf{Argomenti}
 	\begin{itemize}
@@ -211,10 +206,10 @@ FATTS si occupa quindi di gestire gli eventi, le azioni provenienti dalle applic
 	\textbf{Argomenti}
 	\begin{itemize}
 		\item \texttt{dwSpeakFlags: DWORD} contiene i valori dei flags che descrivono le caratteristiche dell'input;
-		\item \texttt{rguidFormatId: GUID} identificatore del formato di uscita della sintesi vocale. I possibili valori possono essere \texttt{SPDFID\_Text} o \texttt{SPDFID\_WAVEFORMATEX};
-		\item \texttt{pWaveFormatEx: WAVEFORMATEX} puntatore alla struttura che descrive il formato d'uscita se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_WAVEFORMATEX}. L'argomento ha valore \texttt{NULL} se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_Text};
+		\item \texttt{rguidFormatId: GUID} identificatore del formato di uscita della sintesi vocale. I possibili valori possono essere \texttt{SPDFID\_Text} o\\\texttt{SPDFID\_WAVEFORMATEX};
+		\item \texttt{pWaveFormatEx: WAVEFORMATEX} puntatore alla struttura che descrive il formato d'uscita se il parametro \texttt{rguidFormatId} ha valore\\\texttt{SPDFID\_WAVEFORMATEX}. L'argomento ha valore \texttt{NULL} se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_Text};
 		\item \texttt{pTextFragList: SPVTEXTFRAG} lista concatenata di \texttt{SPVTEXTFRAG} su cui eseguire la sintesi vocale. Un elemento \texttt{SPVTEXTFRAG} è formato da un frammento di testo decorato da altri atttributi che ne descrivono meglio le caratteristiche;
-		\item \texttt{pOutputSite: ISpTTSEngineSite} è il puntatore all'interfaccia \texttt{ISpTTSEngineSite} che viene utilizzato per scrivere l'audio nel buffer dedicato e aggiungere gli eventi SAPI alla coda.
+		\item \texttt{pOutputSite: ISpTTSEngineSite} è il puntatore all'interfaccia\\\texttt{ISpTTSEngineSite} che viene utilizzato per scrivere l'audio nel buffer dedicato e aggiungere gli eventi SAPI alla coda.
 	\end{itemize}
 	\item \texttt{+ GetOutputFormat(): HRESULT} ritorna il formato audio previsto dall'engine MaryTTS;
 	\\\\
@@ -292,14 +287,14 @@ Il metodo sfruttando la libreria cURL e Jansson elabora l'output del server in f
 \newpage
 \section{Implementazione Interfaccia SAPI~5 per Speect}
 Questa implementazione sfrutta l'engine TTS Speect fornito e sviluppato da Mivoq. Esso è distribuito sottoforma di libreria in modo da permettere il suo utilizzo da parte di altri software.
-L'implementazione è analoga a quella usata per MaryTTS. Vengono implementate le interfacce SAPI~5 \texttt{ISpObjectWithToken} e \texttt{ISpTTSEngine}, inoltre vengono ereditate le classi \texttt{CComObjectRootEx} e \texttt{CComCoClass}.
+L'implementazione è analoga a quella usata per MaryTTS. Vengono implementate le interfacce SAPI~5 \texttt{ISpObjectWithToken} e \texttt{ISpTTSEngine}, inoltre vengono ereditate le classi \texttt{CComObjectRootEx} e\\\texttt{CComCoClass}.\\
 Le classi e i moduli che verranno utilizzati sono: \texttt{SpeectTTS} e \texttt{audio\_event\_functions}.
 \texttt{SpeectTTS} ha il compito di implementare i metodi messi a disposizione dall'interfaccia SAPI~5, invece il modulo \texttt{audio\_event\_functions} si preoccupa di interagire con l'engine TTS Speect.
 \subsection{SpeectTTS}
 La classe \texttt{SpeectTTS} è stata progettata per implementare i metodi dell'interfaccia SAPI~5 e per fornire la struttura minima per costruire la libreria dinamica.
 Attraverso i suoi metodi la classe inizializza l'engine Speect, ne configura la voce attraverso il metodo \texttt{SpeectTTS::SetObjectToken()} e carica il plugin per gestire lo stream audio.\\
-\texttt{SpeectTTS} inoltre si occupa di gestire le azioni provenienti dall'applicazione e di impostare le proprietà relative alla voce attraverso i metodi \texttt{SpeectTTS::HandleActions()} e \texttt{SpeectTTS::AdjustProperties()}.
-Per effettuare la sintesi vocale viene invocato il metodo \texttt{SpeectTTS::Speak()} che attraverso il modulo \texttt{audio\_event\_functions} comunica l'engine Speect.\\\\
+\texttt{SpeectTTS} inoltre si occupa di gestire le azioni provenienti dall'applicazione e di impostare le proprietà relative alla voce attraverso i metodi\\\texttt{SpeectTTS::HandleActions()} e \texttt{SpeectTTS::AdjustProperties()}.
+Per effettuare la sintesi vocale viene invocato il metodo \texttt{SpeectTTS::Speak()} che attraverso il modulo\\\texttt{audio\_event\_functions} comunica l'engine Speect.\\\\
 \textbf{Implementa:}
 \begin{itemize}
 	\item \texttt{ISpObjectWithToken};
@@ -325,7 +320,7 @@ Per effettuare la sintesi vocale viene invocato il metodo \texttt{SpeectTTS::Spe
 	\item \texttt{+ SpeectTTS()} è costruttore della classe che serve ad inizializzare le proprietà legate alla voce e gli oggetti che verranno utilizzati da Speect;
 	\item \texttt{+ \char`\~SpeectTTS()} è il distruttore che ha il compito di eseguire la pulizia della memoria dinamica allocata dalla classe e da Speect; 
 	\item \texttt{+ FinalConstruct(): HRESULT} override del metodo ereditato dalla classe \texttt{CComObjectRootEx} che serve per eseguire le inizializzazioni necessarie dell'oggetto;
-	\item \texttt{+ FinalRelease(): void} override del metodo ereditato dalla classe \texttt{CComObjectRootEx} che serve per eseguire la pulizia dell'oggetto prima di distruggerlo;
+	\item \texttt{+ FinalRelease(): void} override del metodo ereditato dalla classe\\\texttt{CComObjectRootEx} che serve per eseguire la pulizia dell'oggetto prima di distruggerlo;
 	\item \texttt{+ SetObjectToken(): HRESULT} metodo che serve per recuperare le informazioni relative alla voce scritte nel registro di Windows. Questo metodo andrà ad impostare l'attributo \texttt{voiceToken} e inizializzerà Speect.\\\\
 	\textbf{Argomenti}
 	\begin{itemize}
@@ -339,10 +334,10 @@ Per effettuare la sintesi vocale viene invocato il metodo \texttt{SpeectTTS::Spe
 	\textbf{Argomenti}
 	\begin{itemize}
 		\item \texttt{dwSpeakFlags: DWORD} contiene i valori dei flags che descrivono le caratteristiche dell'input;
-		\item \texttt{rguidFormatId: GUID} identificatore del formato di uscita della sintesi vocale. I possibili valori possono essere \texttt{SPDFID\_Text} o \texttt{SPDFID\_WAVEFORMATEX};
-		\item \texttt{pWaveFormatEx: WAVEFORMATEX} puntatore alla struttura che descrive il formato d'uscita se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_WAVEFORMATEX}. L'argomento ha valore \texttt{NULL} se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_Text};
+		\item \texttt{rguidFormatId: GUID} identificatore del formato di uscita della sintesi vocale. I possibili valori possono essere \texttt{SPDFID\_Text} o\\\texttt{SPDFID\_WAVEFORMATEX};
+		\item \texttt{pWaveFormatEx: WAVEFORMATEX} puntatore alla struttura che descrive il formato d'uscita se il parametro \texttt{rguidFormatId} ha valore\\\texttt{SPDFID\_WAVEFORMATEX}. L'argomento ha valore \texttt{NULL} se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_Text};
 		\item \texttt{pTextFragList: SPVTEXTFRAG} lista concatenata di \texttt{SPVTEXTFRAG} su cui eseguire la sintesi vocale. Un elemento \texttt{SPVTEXTFRAG} è formato da un frammento di testo decorato da altri atttributi che ne descrivono meglio le caratteristiche;
-		\item \texttt{pOutputSite: ISpTTSEngineSite} è il puntatore all'interfaccia \texttt{ISpTTSEngineSite} che viene utilizzato per scrivere l'audio e aggiungere gli eventi SAPI alla coda.
+		\item \texttt{pOutputSite: ISpTTSEngineSite} è il puntatore all'interfaccia\\\texttt{ISpTTSEngineSite} che viene utilizzato per scrivere l'audio e aggiungere gli eventi SAPI alla coda.
 	\end{itemize}
 	\item \texttt{+ GetOutputFormat(): HRESULT} ritorna il formato audio previsto dall'engine Speect;
 	\\\\
@@ -511,7 +506,7 @@ Il grafo HRG è stato fondamentale per la costruzione degli eventi SAPI legati a
 Per soddisfare il requisito \textbf{ob02} sono state aggiunte nuove funzionalità all'interno di Speect.
 La necessità di quest'operazione derivava dal fatto che l'engine TTS non era in grado di serializzare un oggetto di tipo \texttt{SAudio} in un buffer.
 L'unica funzione a disposizione era \texttt{SObjectSave()} che permetteva di serializzare un oggetto \texttt{SAudio} come un file dato un percorso.\\
-Per ovviare al problema sono stati introdotti una nuova classe chiamata \texttt{SGenericsource} e dei nuovi metodi.
+Per ovviare al problema sono stati introdotti una nuova classe chiamata\\\texttt{SGenericsource} e dei nuovi metodi.
 \subsubsection{Classe SGenericsource}
 La classe \texttt{SGenericsource} estende la classe base \texttt{SDatasource} e ha il compito associare ad un oggetto qualsiasi delle operazioni di input-output in modo da permettere la gestione completa del comportamento dell'oggetto.\\\\
 \textbf{Eredita da:}
@@ -594,7 +589,7 @@ Per permettere la serializzazione verso un oggetto di tipo \texttt{SDatasource} 
 \end{itemize}
 
 \subsubsection{Modulo write}
-Il modulo \texttt{write} fornisce delle funzioni di supporto alla classe \texttt{SRIFFAudioFileClass}. Per implementare il metodo \texttt{SRIFFAudioFileClass::SaveToDatasource()} è stato necessario aggiungere un nuovo metodo al modulo \texttt{write} chiamato \texttt{s\_write\_audio\_riff\_16\_to\_datasource()}.\\\\
+Il modulo \texttt{write} fornisce delle funzioni di supporto alla classe \texttt{SRIFFAudioFileClass}. Per implementare il metodo \texttt{SRIFFAudioFileClass::SaveToDatasource()} è stato necessario aggiungere un nuovo metodo al modulo \texttt{write} chiamato\\\texttt{s\_write\_audio\_riff\_16\_to\_datasource()}.\\\\
 \textbf{Metodi}
 \begin{itemize}
 	\item \texttt{+ s\_write\_audio\_riff\_16\_to\_datasource(): void} serve a serializzare un oggetto di tipo \texttt{SAudio} in un oggetto di tipo \texttt{SDatasource}.\\\\
@@ -616,7 +611,7 @@ Di seguito andremo ad analizzare i metodi che sono stati aggiunti.\\\\
 	\item \texttt{check\_and\_change\_rate\_volume()} serve a modificare il volume o la velocità della voce se è stato rilevato un cambiamento;\\\\
 	\textbf{Argomenti}
 	\begin{itemize}
-		\item \texttt{HTSsynth: SHTSEngineSynthUttProc105} oggetto che rappresenta l'\gls{utteranceprocg} associato al plugin che utilizza le API HTS\_engine 1.05;
+		\item \texttt{HTSsynth: SHTSEngineSynthUttProc105} oggetto che rappresenta \\l'\gls{utteranceprocg} associato al plugin che utilizza le API HTS\_engine 1.05;
 		\item \texttt{utt: SUtterance} oggetto che rappresenta l'utterance associata alla sintesi corrente;
 		\item \texttt{error: s\_erc} oggetto che tiene traccia degli errori di Speect.
 	\end{itemize}

@@ -1,9 +1,10 @@
 \chapter{Pianificazione} %------------------------------ CHAPTER TITLE
 La durata dello stage è stimata attorno alle 320 ore circa, senza una buona pianificazione è quasi impossibile portare a termine un progetto.\\
 Per questo motivo è stato definito un piano di lavoro che verrà successivamente descritto.\\
-Lo stage è stato diviso in attività e ad ognuna è stata associata una stima temporale che ne determina la sua conclusione. Per definire le tempistiche servono tanta esperienza e la consapevolezza delle risorse a disposizione.\\
+Lo stage è stato diviso in attività. 
+Ad ognuna è stata associata una stima temporale entro la quale si presume possa concludersi. Per definire le tempistiche servono tanta esperienza e la consapevolezza delle risorse a disposizione.\\
 Un'attenzione particolare deve essere posta nei confronti dei rischi che si possono incontrare e prevenire le loro possibili conseguenze a priori.\\
-Assieme alle attività da svolgere vengono definiti inoltre gli obiettivi che si vogliono rispettare in modo da avere un feedback sul lavoro svolto.\\
+Assieme alle attività da svolgere vengono definiti inoltre gli obiettivi che si vogliono rispettare in modo da avere dei feedback sul lavoro svolto.\\
 Il progetto di stage non ha potuto sfruttare qualsiasi tecnologia a disposizione perchè sono stati imposti dei vincoli da rispettare che verranno illustrati in questo capitolo. 
 
 \thispagestyle{empty}
@@ -67,6 +68,15 @@ La suddivisione delle ore concordata insieme al tutor aziendale Giulio Paci e al
 	
 \end{center}
 
+\subsection{Problemi incontrati}
+Durante le attività di stage non sono sorti gravi problemi che hanno impedito di proseguire il lavoro in maniera lineare.\\
+L'ostacolo più grande da superare si è presentato nella seconda parte dello stage, durante lo sviluppo dell'implementazione dell'engine TTS SAPI~5 mediante Speect.\\
+Premettendo che, la versione di Speect sviluppata da Mivoq fino a quel momento era resa funzionante solo all'interno del sistema operativo GNU/Linux, era mio compito fare altrettanto per Microsoft Windows.\\
+Durante questa attività mi sono imbattuto nella compilazione di un plugin utile per il processo di \gls{postaggingg} e determinante per il funzionamento di Speect.\\
+Il plugin utilizzava la libreria \gls{hunposg} che non era mai stata compilata e testata per il sistema Microsoft Windows.
+Dopo svariati tentativi e una settimana di lavoro, grazie anche all'aiuto del tutor aziendale, sono riuscito a rendere funzionante il plugin e con esso tutto il sistema di sintesi vocale Speect.\\
+Questo momento è stato cruciale per la buona riuscita dello stage e ha confermato l'impiego della libreria HunPos all'interno di Speect per i due sistemi operativi.
+
 \subsection{Prodotto finale}
 Lo stage ha come obiettivo finale la creazione di un prodotto.
 Il risultato che si vuole ottenere è l'integrazione degli engine TTS MaryTTS e Speect con il sistema operativo Microsoft Windows. Tutto ciò dovrà essere ottenuto grazie all'implementazione delle interfacce SAPI~5.\\
@@ -76,6 +86,8 @@ Le implementazioni ottenute dovranno fornire la possibilità di controllare i se
 	\item la velocità;
 	\item la tonalità (o pitch).
 \end{itemize}
+
+Ad esempio, se consideriamo un'applicazione utente che segua la specifica SAPI~5 (Balabolka), questa dovrà essere in grado di individuare le voci messe a disposizione dagli engine TTS MaryTTS e Speect ed eseguire la sintesi vocale con i valori dei parametri scelti.
 
 
 \subsection{Obiettivi}
