@@ -28,7 +28,7 @@
   tabsize=2
 }
 %------------------------------ define Abstract environment, missing in the 'book' class
-\newenvironment{abstract}{\cleardoublepage \null \vfill \begin{center}\bfseries\abstractname \end{center}}{\vfill\null}
+\newenvironment{abstract}{\cleardoublepage \null \vfill \begin{center}\large\bfseries\abstractname \end{center}}{\vfill\null}
 \addto\captionsitalian{\renewcommand*\abstractname{Sommario}} % change Abstract title
 %------------------------------ active url
 \usepackage{url}
@@ -102,6 +102,9 @@
 \thispagestyle{empty} 
 \subfile{extra/ringraziamenti}
 
+%------------------------------ ABSTRACT
+\subfile{extra/abstract}
+
 %------------------------------ TABELLA DEI CONTENUTI
 \begingroup 
   \makeatletter
@@ -111,10 +114,6 @@
   \listoffigures
   \clearpage
 \endgroup
-
-
-%------------------------------ ABSTRACT
-\subfile{extra/abstract}
 
 
 \mainmatter
