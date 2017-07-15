@@ -20,7 +20,7 @@ Riassumendo, i vari componenti che verranno utilizzati sono:
 	\item[Engine TTS] engine di sintesi vocale messo a disposizione dall'azienda, che può essere MaryTTS o Speect.
 \end{description}
 
-\subsection{Archittetura engine SAPI~5 mediante MaryTTS}
+\subsection{Architettura engine SAPI~5 mediante MaryTTS}
 L'architettura adottata per rendere fruibile l'engine MaryTTS dal sistema operativo Microsoft Windows è composta dai seguenti componenti:
 \begin{description}
 	\item[FATTS] implementa l'interfaccia SAPI~5 e ha il compito di dialogare con il sistema operativo Microsoft Windows e di interagire con il componente \textbf{fatts\_client}.
@@ -31,10 +31,10 @@ L'architettura adottata per rendere fruibile l'engine MaryTTS dal sistema operat
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{images/FATTS-sapi5.png}
-	\caption{Archittetura engine SAPI~5 mediante MaryTTS}
+	\caption{Architettura engine SAPI~5 mediante MaryTTS}
 \end{figure}
 
-\subsection{Archittetura engine SAPI~5 mediante Speect}
+\subsection{Architettura engine SAPI~5 mediante Speect}
 L'architettura dell'engine SAPI~5 mediante Speect è analoga a quella ottenuta per MaryTTS ed è composta dai seguenti componenti: 
 \begin{description}
 	\item[SpeectTTS] implementa l'interfaccia SAPI~5 e ha il compito di dialogare con il sistema operativo Microsoft Windows e di interagire con il componente \textbf{audio\_event\_functions}.
@@ -44,7 +44,7 @@ L'architettura dell'engine SAPI~5 mediante Speect è analoga a quella ottenuta p
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{images/SpeectTTS-sapi5.png}
-	\caption{Archittetura engine SAPI~5 mediante SpeectTTS}
+	\caption{Architettura engine SAPI~5 mediante SpeectTTS}
 \end{figure}
 
 I componenti sopraelencati verranno descritti in dettaglio nel capitolo \hyperref[chap:descrizione-dei-componenti]{Descrizione dei Componenti}.

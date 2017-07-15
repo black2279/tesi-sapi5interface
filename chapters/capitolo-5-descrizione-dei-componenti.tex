@@ -73,7 +73,7 @@ Si preoccupa di eseguire le chiamate all'engine TTS e di trattare l'output audio
 		\item \texttt{dwSpeakFlags: DWORD} contiene i valori dei flags che descrivono le caratteristiche dell'input;
 		\item \texttt{rguidFormatId: GUID} identificatore del formato di uscita della sintesi vocale. I possibili valori possono essere \texttt{SPDFID\_Text} o\\ \texttt{SPDFID\_WAVEFORMATEX};
 		\item \texttt{pWaveFormatEx: WAVEFORMATEX} puntatore alla struttura che descrive il formato d'uscita se il parametro \texttt{rguidFormatId} ha valore\\ \texttt{SPDFID\_WAVEFORMATEX}. L'argomento ha valore \texttt{NULL} se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_Text};
-		\item \texttt{pTextFragList: SPVTEXTFRAG} lista concatenata di \texttt{SPVTEXTFRAG} usata come input per la sintesi vocale. Un elemento \texttt{SPVTEXTFRAG} è formato da un frammento di testo decorato da altri atttributi che ne descrivono meglio le caratteristiche;
+		\item \texttt{pTextFragList: SPVTEXTFRAG} lista concatenata di \texttt{SPVTEXTFRAG} usata come input per la sintesi vocale. Un elemento \texttt{SPVTEXTFRAG} è formato da un frammento di testo decorato da altri attributi che ne descrivono meglio le caratteristiche;
 		\item \texttt{pOutputSite: ISpTTSEngineSite} puntatore all'interfaccia\\ \texttt{ISpTTSEngineSite} che viene utilizzato per scrivere l'audio nel buffer dedicato e aggiungere gli eventi SAPI alla coda.
 	\end{itemize}  
 \end{itemize}
@@ -91,7 +91,7 @@ Un evento SAPI è definito da una struttura chiamata \texttt{SPEVENT} che è com
 \begin{itemize}
 	\item \texttt{eEventId: WORD} identifica il tipo di evento tramite un enumeratore;
 	\item \texttt{elParamType: WORD} definisce tramite un enumeratore il tipo di \texttt{lParam};
-	\item \texttt{ulStreamNum: ULONG} identifica a quale stream appartiene l'evento. Nel nostro caso l'engine TTS non deve preoccuparsi di settare questo parametro, perchè sarà compito dell'applicazione;
+	\item \texttt{ulStreamNum: ULONG} identifica a quale stream appartiene l'evento. Nel nostro caso l'engine TTS non deve preoccuparsi di settare questo parametro, perché sarà compito dell'applicazione;
 	\item \texttt{ullAudioOffset: ULONGLONG} rappresenta l'offset dello stream audio espresso in termini di byte. Buona norma è che questo valore coincida con l'inizio di un campione audio;
 	\item \texttt{wParam: WPARAM} è un campo generico che può contenere le informazioni associate all'evento;
 	\item \texttt{lParam: LPARAM} è un campo generico che può contenere le informazioni associate all'evento.
@@ -208,7 +208,7 @@ FATTS si occupa quindi di gestire gli eventi, le azioni provenienti dalle applic
 		\item \texttt{dwSpeakFlags: DWORD} contiene i valori dei flags che descrivono le caratteristiche dell'input;
 		\item \texttt{rguidFormatId: GUID} identificatore del formato di uscita della sintesi vocale. I possibili valori possono essere \texttt{SPDFID\_Text} o\\\texttt{SPDFID\_WAVEFORMATEX};
 		\item \texttt{pWaveFormatEx: WAVEFORMATEX} puntatore alla struttura che descrive il formato d'uscita se il parametro \texttt{rguidFormatId} ha valore\\\texttt{SPDFID\_WAVEFORMATEX}. L'argomento ha valore \texttt{NULL} se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_Text};
-		\item \texttt{pTextFragList: SPVTEXTFRAG} lista concatenata di \texttt{SPVTEXTFRAG} su cui eseguire la sintesi vocale. Un elemento \texttt{SPVTEXTFRAG} è formato da un frammento di testo decorato da altri atttributi che ne descrivono meglio le caratteristiche;
+		\item \texttt{pTextFragList: SPVTEXTFRAG} lista concatenata di \texttt{SPVTEXTFRAG} su cui eseguire la sintesi vocale. Un elemento \texttt{SPVTEXTFRAG} è formato da un frammento di testo decorato da altri attributi che ne descrivono meglio le caratteristiche;
 		\item \texttt{pOutputSite: ISpTTSEngineSite} è il puntatore all'interfaccia\\\texttt{ISpTTSEngineSite} che viene utilizzato per scrivere l'audio nel buffer dedicato e aggiungere gli eventi SAPI alla coda.
 	\end{itemize}
 	\item \texttt{+ GetOutputFormat(): HRESULT} ritorna il formato audio previsto dall'engine MaryTTS;
@@ -286,7 +286,7 @@ Il metodo sfruttando la libreria cURL e Jansson elabora l'output del server in f
 
 \newpage
 \section{Implementazione Interfaccia SAPI~5 per Speect}
-Questa implementazione sfrutta l'engine TTS Speect fornito e sviluppato da Mivoq. Esso è distribuito sottoforma di libreria in modo da permettere il suo utilizzo da parte di altri software.
+Questa implementazione sfrutta l'engine TTS Speect fornito e sviluppato da Mivoq. Esso è distribuito sotto forma di libreria in modo da permettere il suo utilizzo da parte di altri software.
 L'implementazione è analoga a quella usata per MaryTTS. Vengono implementate le interfacce SAPI~5 \texttt{ISpObjectWithToken} e \texttt{ISpTTSEngine}, inoltre vengono ereditate le classi \texttt{CComObjectRootEx} e\\\texttt{CComCoClass}.\\
 Le classi e i moduli che verranno utilizzati sono: \texttt{SpeectTTS} e \texttt{audio\_event\_functions}.
 \texttt{SpeectTTS} ha il compito di implementare i metodi messi a disposizione dall'interfaccia SAPI~5, invece il modulo \texttt{audio\_event\_functions} si preoccupa di interagire con l'engine TTS Speect.
@@ -336,7 +336,7 @@ Per effettuare la sintesi vocale viene invocato il metodo \texttt{SpeectTTS::Spe
 		\item \texttt{dwSpeakFlags: DWORD} contiene i valori dei flags che descrivono le caratteristiche dell'input;
 		\item \texttt{rguidFormatId: GUID} identificatore del formato di uscita della sintesi vocale. I possibili valori possono essere \texttt{SPDFID\_Text} o\\\texttt{SPDFID\_WAVEFORMATEX};
 		\item \texttt{pWaveFormatEx: WAVEFORMATEX} puntatore alla struttura che descrive il formato d'uscita se il parametro \texttt{rguidFormatId} ha valore\\\texttt{SPDFID\_WAVEFORMATEX}. L'argomento ha valore \texttt{NULL} se il parametro \texttt{rguidFormatId} ha valore \texttt{SPDFID\_Text};
-		\item \texttt{pTextFragList: SPVTEXTFRAG} lista concatenata di \texttt{SPVTEXTFRAG} su cui eseguire la sintesi vocale. Un elemento \texttt{SPVTEXTFRAG} è formato da un frammento di testo decorato da altri atttributi che ne descrivono meglio le caratteristiche;
+		\item \texttt{pTextFragList: SPVTEXTFRAG} lista concatenata di \texttt{SPVTEXTFRAG} su cui eseguire la sintesi vocale. Un elemento \texttt{SPVTEXTFRAG} è formato da un frammento di testo decorato da altri attributi che ne descrivono meglio le caratteristiche;
 		\item \texttt{pOutputSite: ISpTTSEngineSite} è il puntatore all'interfaccia\\\texttt{ISpTTSEngineSite} che viene utilizzato per scrivere l'audio e aggiungere gli eventi SAPI alla coda.
 	\end{itemize}
 	\item \texttt{+ GetOutputFormat(): HRESULT} ritorna il formato audio previsto dall'engine Speect;
@@ -413,7 +413,7 @@ Infine Speect mediante il plugin dedicato al rendering audio, genera l'output e 
 \section{MaryTTS}
 MaryTTS è un engine TTS multilingua open-source sviluppato da DFKI. Dopo aver valutato le sue caratteristiche e funzionalità Mivoq ha scelto di contribuire al suo sviluppo e di integrarlo nella piattaforma FA-TTS.
 L'azienda attraverso il suo lavoro ha esteso le funzionalità originali di MaryTTS fornendo nuove API e aggiungendo nuovi formati di input ed output.\\
-La piattaforma FA-TTS, grazie al contributo di Mivoq, è grado di eseguire la sintesi vocale con qualsiasi voce. Questo è reso possibile, perchè l'azienda mette a disposizione un servizio che permette di digitalizzare ogni tipo voce.
+La piattaforma FA-TTS, grazie al contributo di Mivoq, è grado di eseguire la sintesi vocale con qualsiasi voce. Questo è reso possibile, perché l'azienda mette a disposizione un servizio che permette di digitalizzare ogni tipo voce.
 \subsection{Interfaccia Web Client}
 La piattaforma FA-TTS è scritta in Java e può essere installata nel sistema come applicazione server.
 Dispone di un'interfaccia web molto semplice composta da una casella di testo dove inserire l'input da sintetizzare e delle combo box che servono a selezionare la voce, il tipo di input e il tipo di output desiderati.
@@ -483,7 +483,7 @@ Mivoq ha scelto di utilizzare questo engine e di portarne avanti lo sviluppo per
 	\item Speect è scritto interamente in C seguendo lo standard ISO/IEC 9899:1990. Questo permette di aver una alta portabilità e compatibilità anche con sistemi non recenti. 
 \end{itemize}
 La peculiarità di Speect è che il suo funzionamento si basa su una configurazione chiamata voce. Questo permette di scegliere, ad esempio, quali plugin devo essere abilitati e le caratteristiche che deve avere la sintesi.
-Speect può essere utilizzato dalle applicazioni esterne e dai sistemi operativi sottoforma di libreria. Nel caso del sistema operativo Microsoft Windows, Speect viene fornito come libreria dinamica (DLL).
+Speect può essere utilizzato dalle applicazioni esterne e dai sistemi operativi sotto forma di libreria. Nel caso del sistema operativo Microsoft Windows, Speect viene fornito come libreria dinamica (DLL).
 \subsection{Heterogeneous Relation Graph}
 Speect per gestire l'analisi testuale sfrutta un grafo chiamato Heterogeneous Relation Graph.
 Il grafo ha il compito di tenere traccia delle relazioni che ci sono all'interno del testo.

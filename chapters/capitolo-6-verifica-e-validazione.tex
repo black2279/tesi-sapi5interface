@@ -20,12 +20,12 @@ I test sono stati condotti principalmente seguendo due fasi:
 	\item \textbf{seconda fase} consisteva nel verificare tramite log la corretta sequenza degli eventi SAPI lanciati dall'applicazione.
 \end{itemize}
 In futuro questa procedura potrà essere sostituita o automatizzata e migliorata per consentire uno sviluppo di qualità maggiore.
-Per quanto riguarda il requisito \textbf{de02}, che riguarda i test di unità relativi a Speect, non è stato soddisfatto, perchè ci sono state delle complicazioni riguardo la compilazione del plugin Hunpos all'interno dell'ambiente Windows.\\
+Per quanto riguarda il requisito \textbf{de02}, che riguarda i test di unità relativi a Speect, non è stato soddisfatto, perché ci sono state delle complicazioni riguardo la compilazione del plugin Hunpos all'interno dell'ambiente Windows.\\
 Vista l'importanza del plugin all'interno di Speect, si è preferito dedicare del tempo alla sua corretta compilazione, invece che introdurre nuovi test di unità.\\
-Il requisito \textbf{de02} non è stato soddisfatto perchè in corso d'opera è stato deciso di dedicare maggior tempo al requisito \textbf{op01}, che ha permesso di sviluppare quasi completamente la gestione degli eventi SAPI.
+Il requisito \textbf{de02} non è stato soddisfatto perché in corso d'opera è stato deciso di dedicare maggior tempo al requisito \textbf{op01}, che ha permesso di sviluppare quasi completamente la gestione degli eventi SAPI.
 \section{Validazione}
 Negli ultimi giorni di stage è stato condotto, assieme al tutor aziendale, il collaudo.
-I risultati ottenuti sono stati giudicati positivi, perchè quasi tutti i requisiti sono stati soddisfatti.\\
+I risultati ottenuti sono stati giudicati positivi, perché quasi tutti i requisiti sono stati soddisfatti.\\
 Quelli che risultavano non soddisfatti o parzialmente soddisfatti sono:
 \begin{itemize}
 	\item \textbf{de02}
@@ -36,7 +36,7 @@ Il tutor aziendale ha eseguito il collaudo tramite le applicazioni utilizzate pe
 Durante il collaudo non sono stati evidenziati gravi problemi riguardanti il progetto, ma sono emerse delle carenze da parte degli engine TTS utilizzati rispetto allo standard SAPI~5.
 Infatti quando le applicazioni utilizzate per i test facevano uso degli engine TTS si è notato che durante la sintesi vocale le parole non venivano evidenziate correttamente.
 Questo problema è emerso sia con l'utilizzo di MaryTTS che con Speect.\\
-Nel primo caso le parole non venivano evidenziate correttamente perchè MaryTTS non generava l'array \texttt{tokens} quando incontrava la sequenza ". lettera\_maiuscola" nell'input testuale.\\
+Nel primo caso le parole non venivano evidenziate correttamente perché MaryTTS non generava l'array \texttt{tokens} quando incontrava la sequenza ". lettera\_maiuscola" nell'input testuale.\\
 Nel secondo caso, Speect considerava l'offset e la lunghezza delle parole in caratteri e non in byte. Questo comportava che l'offset e la lunghezza dei caratteri utilizzati negli eventi di tipo \texttt{SPEI\_WORD\_BOUNDARY} non fossero corretti.\\
 Tralasciando questi due aspetti legati agli engine, che verranno risolti in futuro, il tutor aziendale è rimasto molto soddisfatto del lavoro svolto.
 
